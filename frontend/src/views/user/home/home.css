@@ -1,0 +1,214 @@
+.disabled {
+    display: none;
+}
+
+.searchIcon {
+    position: relative;
+    cursor: pointer;
+}
+
+.account {
+    cursor: pointer;
+}
+
+#searchBar {
+    position: absolute;
+    left: 305px;
+    transform: translateY(3px);
+}
+
+.section1 {
+    background: rgba(30, 40, 50, 0.05);
+    height: 85vh;
+    font-family: Open Sans;
+}
+
+.section1 .lgo{
+    font-size: 28px;
+}
+.section1 .account {
+    display: flex;
+    justify-content: center;
+}
+
+.section1 button{
+    border: none;
+    background: none;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0 10px;
+}
+
+nav {
+    display: flex;
+    width: 70vw;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 25px 0;
+    border-bottom: 1px solid rgb(160, 155, 155);
+}
+menu {
+    display: flex;
+    width: 70vw;
+    margin: 53px auto 60px auto;
+    justify-content: space-around;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+menu a {
+    text-decoration: none; 
+    color: black;
+    text-align: center;
+    display: flex;
+}
+
+landing {
+    display: flex;
+    margin: 0 auto;
+    width: 70vw;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+}
+
+landing h1 {
+    font-size: 4.625em;
+}
+
+landing h3 {
+    font-size: 1.875em;
+    margin: 50px 0;
+}
+
+landing .left-side {
+    margin: 100px 0;
+}
+
+.left-side button{
+    background: rgba(30, 40, 50, 1);
+    width: 223px;
+    height: 72px;
+    top: 591px;
+    left: 351px;
+    padding: 19px, 26px, 19px, 26px;
+    gap: 8px;
+    color: white;
+    font-size: 34px;
+    border: none;
+}
+
+.section2{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 70vw;
+}
+
+.title{
+    font-size: 3.125em;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 81px;
+}
+
+.section2 .category{
+    display: flex ;
+    font-size: 1em;
+    justify-content: space-between;
+}
+
+
+.section2 .category .products a{
+    padding: 0 10px;
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
+}
+
+.section2 .filter{
+    width: 92px;
+    height: 32px;
+    padding: 5px, 15px, 5px, 15px;
+    gap: 4px;
+    background: rgba(30, 40, 50, 1);
+    color: white;
+    border: none;
+    text-align: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 310px);
+    grid-auto-rows: 480px;
+    grid-gap: 20px;
+    margin: 35px;
+}
+
+.grid-item p {
+    margin-top: 18px;
+    font-family: Open Sans;
+}
+.grid-item .name-price {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grid-item .productName {
+    font-weight: bold;
+}
+
+.grid-item .name {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.grid-item .price {
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+}
+
+.section3 {
+    width: 70%;
+    margin: 220px auto;
+}
+.section3 .grid-containers {
+    display: grid;
+    grid-template-columns: 400px 200px 200px 250px;
+    grid-template-rows: 220px;
+    grid-gap: 35px;
+}
+
+.section3 .grid-items p {
+    margin: 0 0 75px 0;
+}
+
+.section3 .grid-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section3 .grid-items a {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.grid-items {
+    font-family: Open Sans;
+}
+
+footer {
+    background: rgba(30, 40, 50, 1);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    align-items: center;
+    font-size: 1.1em; 
+    padding: 0 100px;
+}

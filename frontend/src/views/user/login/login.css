@@ -1,0 +1,134 @@
+nav {
+    display: flex;
+    width: 70vw;
+    margin: 53px auto 60px auto;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(160, 155, 155);
+}
+
+nav .logo {
+    cursor: pointer;
+}
+
+.pattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -99;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 33.125em;
+    height: 35em;
+    align-items: center;
+    margin: 0 auto;
+    background: rgba(242, 242, 242, 1);
+
+}
+
+.container .modal {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80%;
+    
+}
+
+.container .modal h1 {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 55px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.container .modal input {
+    width: 25em;
+    height: 3.5em;
+    margin: 23px auto 0 auto;
+    border-radius: 3px;
+    border: 2px solid rgba(191, 191, 191, 1);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-align: left;
+    padding: .85em;
+}
+
+.modal .login {
+    background: var(--black);
+    cursor: pointer;
+    width: 25em;
+    height: 3.5em;
+    margin: 33px auto 0 auto;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0px;
+    border: 0;
+}
+
+.modal .forgot {
+    text-align: end;
+    transform: translate(-12px, 6px);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.design {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-top: 20px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.design .line {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    width: 170px;
+    height: 0px;
+}
+
+.modal .google {
+    width: 197px;
+    height: 53.85px;
+    top: 609px;
+    left: 861px;
+    border-radius: 3px;
+    border: 2px solid rgba(191, 191, 191, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--white);
+    cursor: pointer;
+    margin: 23px auto 0 auto;
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    font-size: 21px;
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+
+.footer {
+    margin: 14px auto 0 auto;
+    display: flex;
+    gap: .86em;
+}
+
+.footer a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer p {
+    color: rgba(0, 0, 0, 0.4);
+}
