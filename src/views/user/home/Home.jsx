@@ -57,7 +57,7 @@ const Home = () => {
                 <a href="http://">Others</a>
             </menu>
 
-            <landing>
+            <div className="landing">
                 <div className="left-side">
                     <h1>Lorem Ipsum</h1>
                     <h3>you can explore ans shop many differnt collection
@@ -67,7 +67,7 @@ const Home = () => {
                 <div className="right-side">
                     <img src={girlBackground}/>
                 </div>
-            </landing>
+            </div>
         </section>
         <section className="section2">
             <h1 className="title">
