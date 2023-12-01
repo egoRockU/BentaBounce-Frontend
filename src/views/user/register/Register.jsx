@@ -57,7 +57,7 @@ const Register = () => {
     const handleGoogleRegister = async (credentialResponse) => {
         var obj = jwtDecode(credentialResponse.credential)
         var googleInputs = {'username': obj.name, 'email': obj.email, 'password': obj.family_name+obj.given_name}
-        axios.post(' https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/accounts/signup.php', googleInputs, {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/accounts/signup.php', googleInputs, {
             headers : {
                 "ngrok-skip-browser-warning": "8888"
             }
