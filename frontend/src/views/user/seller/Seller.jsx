@@ -1,8 +1,7 @@
-import "./home.css"
-import { useNavigate } from "react-router-dom"
-import girlBackground from "../../../img/19.png"
-import Basket from "../../../img/basket.png"
-import filter from "../../../img/filter.png"
+import "./seller.css"
+import Profile from "../../../img/pf.png"
+import Navbar from "../../../components/Navbar"
+import GridItem from "../../../components/GridItem"
 import bag from "../../../img/14.png"
 import jagger from "../../../img/15.png"
 import glasses from "../../../img/16.png"
@@ -11,54 +10,39 @@ import scarf from "../../../img/top-product.png"
 import nikerepel from "../../../img/nikerepel.png"
 import nikeair from "../../../img/nikeair.png"
 import dressgreen from "../../../img/dressgreen.png"
-import GridItem from "../../../components/GridItem"
-import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
 
-import { useState } from "react"
 
-const Home = () => {
+const Seller = () => {
 
     return (
         <>
-        <section className="section1">
             <Navbar />
-
-            <menu>
-                <a href="http://">Jewelry & Accessories</a>
-                <a href="http://">Clothing & Shoes</a>
-                <a href="http://">Home & Living</a>
-                <a href="http://">Wedding & Party</a>
-                <a href="http://">Toys & Entertainment</a>
-                <a href="http://">Art & Collectibles</a>
-                <a href="http://">Others</a>
-            </menu>
-
-            <landing>
-                <div className="left-side">
-                    <h1>Lorem Ipsum</h1>
-                    <h3>you can explore ans shop many differnt collection
-                    from various barands here.</h3>
-                    <button><img src={Basket}  />Shop Now</button>
+            <div className="sellerContainer">
+                <div className="sellerProfile">
+                    <div className="profiless">
+                        <img src={Profile} className="profilepic"/>
+                    </div>
+                    <div className="descriptions">
+                        <h1 className="userName">Leansel</h1>
+                        <div className="profiles">
+                            <p className="profileText">Profile</p>
+                            <p className="profileDesc">Greetings, everyone. My name is Bard, and I'm a large language model from Google AI. 
+                            I'm trained on a massive dataset of text and code, and I can generate text, translate languages,
+                            write different kinds of creative content, and answer your questions in an informative way. 
+                            I'm still under development, but I'm always learning new things. I'm excited to meet you all and help you with your tasks and questions.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="right-side">
-                    <img src={girlBackground}/>
-                </div>
-            </landing>
-        </section>
-        <section className="section2">
+            </div>
+
+            <section className="section2">
             <h1 className="title">
-                Discover More
+                Here's What I Sell
             </h1>
-            <div className="categoriess">
-                <div className="productss">
+            <div className="category">
+                <div className="products">
                     <a href="#">All Products</a>
-                    <a href="#">T-shirt</a>
-                    <a href="#">Hoodies</a>
-                    <a href="#">Jacket</a>
-                </div>
-                <div>
-                    <button className="filter" ><img src={filter}/>Filter</button>
                 </div>
             </div>
             
@@ -119,4 +103,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Seller

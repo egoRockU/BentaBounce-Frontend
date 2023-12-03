@@ -1,0 +1,143 @@
+.viewproduct h1{
+    width: 70%;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.containerr{
+    width: 70%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.containerr .picture {
+    width: 30%;
+    height: 70%;
+}
+
+.containerr .picture img{
+    width: 100%;
+    height: 100%;
+}
+.description{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description .name{
+    overflow: hidden;
+}
+
+.description .price {
+    overflow: hidden;
+    background: #F4F4F5;
+    padding: 1rem 1.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.description .descTitle {
+    color: #00000066;
+    width: 6rem;
+}
+
+.description .descText {
+    width: 70%;
+}
+
+.description .desc {
+    display: flex;
+}
+
+.category {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.quantity {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    width: 90%;
+}
+
+.quantityItem {
+    display: flex;
+    align-items: center;
+}
+
+.totalItem {
+    display: flex;
+    align-items: center;
+}
+
+.totalItem p {
+    padding: 0 1rem;
+}
+
+.totalItem button {
+    border: 1px solid #00000066;
+    padding: .5rem;
+}
+
+.stocks {
+    display: flex;
+}
+
+.stocksdesc {
+    width: 8rem;
+    color: #00000066;
+}
+
+.addToCart {
+    width: 40%;
+    background: #1E2832;
+    color: white;
+    padding: .6rem 1.5rem;
+    border: none;
+}
+
+.profile {
+    display: flex;
+    margin: 0 auto;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile .pfImage {
+    width: 20rem;
+    margin: 0 1.5rem 0 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.profile .pfImage img{
+    border-radius: 100%;
+    width: 50%;
+}
+
+.profile .store {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile .store button {
+    margin: 1rem 0;
+    border: 1px solid #000;
+    background: #848B9E;
+    color: white;
+    padding: .6rem 1.5rem;
+    text-align: center;
+}
+
+.profile h5 {
+    font-size: 1.5rem;
+}

@@ -5,9 +5,15 @@
 .searchIcon {
     position: relative;
     cursor: pointer;
+    width: 200px;
 }
 
 .account {
+    cursor: pointer;
+    width: 200px;
+}
+
+.shopping{
     cursor: pointer;
 }
 
@@ -26,12 +32,12 @@
 .section1 .lgo{
     font-size: 28px;
 }
-.section1 .account {
+nav .account {
     display: flex;
     justify-content: center;
 }
 
-.section1 button{
+nav button{
     border: none;
     background: none;
     display: flex;
@@ -115,14 +121,14 @@ landing .left-side {
     margin-top: 81px;
 }
 
-.section2 .category{
+.section2 .categoriess{
     display: flex ;
     font-size: 1em;
     justify-content: space-between;
 }
 
 
-.section2 .category .products a{
+.section2 .categoriess .productss a{
     padding: 0 10px;
     font-size: 1em;
     text-decoration: none;
@@ -149,6 +155,10 @@ landing .left-side {
     margin: 35px;
 }
 
+.grid-item:hover {
+    cursor: pointer;
+}
+
 .grid-item p {
     margin-top: 18px;
     font-family: Open Sans;
@@ -169,6 +179,14 @@ landing .left-side {
 .grid-item .price {
     color: rgba(0, 0, 0, 1);
     font-weight: bold;
+}
+
+.grid-item .price:hover {
+    color:chocolate;
+}
+
+.grid-item .picture{
+    position: relative;
 }
 
 .section3 {
@@ -212,3 +230,6 @@ footer {
     font-size: 1.1em; 
     padding: 0 100px;
 }
+
+
+
