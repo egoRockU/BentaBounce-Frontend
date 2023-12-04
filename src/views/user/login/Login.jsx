@@ -85,11 +85,9 @@ const Login = () => {
             <div className="container">
                 <div className="modal">
                     <h1>Login</h1>
-                    <form>
-                        <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username / Email Address" type="text" required />
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" required />
-                        <button className="login" onClick={login}>Log in</button>
-                    </form>
+                    <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Phone Number / Email Address" type="text" />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+                    <button className="login" onClick={login}>Log in</button>
                     <p className="forgot">Forgot Password</p>
                     <div className="design">
                         <div className="line"></div>
