@@ -11,25 +11,50 @@ import AddProduct from "./components/AddProduct"
 import SellerProfile from "./components/SellerProfile"
 import EditSellerProfile from "./components/EditSellerProfile"
 import EditGridItem from "./components/EditGridItem"
+import { checkIsLoggedIn } from "./utils/checkIsLoggedIn"
+import PageNotFound from "./components/PageNotFound"
 
 function App() {
 
+  const isLoggedIn = checkIsLoggedIn()
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/seller" element={<Seller />}/>
-        <Route path="/shopping" element={<Shopping />} />
-        <Route path="/productView" element={<ProductView />} />
-        <Route path="/storeview" element={<StoreView/>} />
-        <Route path="/editproduct" element={<EditProduct/>} />
-        <Route path="/addproduct" element={<AddProduct />} />
-        <Route path="/sellerprofile" element={<SellerProfile />} />
-        <Route path="/editsellerprofile"  element={<EditSellerProfile />} />
-        <Route path="/editgriditem"  element={<EditGridItem />} />
-      </Routes>
+        {
+          !isLoggedIn && 
+          <>
+            <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/seller" element={<Seller />}/>
+            <Route path="/productView" element={<ProductView />} />
+            <Route path="/storeview" element={<StoreView/>} />
+            <Route path="*" element={<PageNotFound/>}/>
+            </Routes>
+          </>
+        }
+        
+        {
+          isLoggedIn && 
+          <>
+            <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/seller" element={<Seller />}/>
+            <Route path="/productView" element={<ProductView />} />
+            <Route path="/storeview" element={<StoreView/>} />
+
+            <Route path="/shopping" element={<Shopping />} />
+            <Route path="/editproduct" element={<EditProduct/>} />
+            <Route path="/addproduct" element={<AddProduct />} />
+            <Route path="/sellerprofile" element={<SellerProfile />} />
+            <Route path="/editsellerprofile"  element={<EditSellerProfile />} />
+            <Route path="/editgriditem"  element={<EditGridItem />} />
+            <Route path="*" element={<PageNotFound/>}/>
+            </Routes>
+          </>
+        }
     </BrowserRouter>
   )
 }

@@ -13,10 +13,15 @@ import dressgreen from "../../../img/dressgreen.png"
 import GridItem from "../../../components/GridItem"
 import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
+import { useNavigate } from "react-router"
 
 
 
 const Home = () => {
+    const navigate = useNavigate()
+
+    navigate(0)
+    
 
     return (
         <>

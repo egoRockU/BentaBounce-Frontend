@@ -1,5 +1,5 @@
 import Profile from "../img/pf.png"
-import Navbar from "../components/Navbar"
+import AccountNav from "./AccountNav"
 import bag from "../img/14.png"
 import jagger from "../img/15.png"
 import glasses from "../img/16.png"
@@ -15,7 +15,7 @@ import EditGridItem from "./EditGridItem"
 const EditSellerProfile = () => {
     return ( 
         <>
-        <Navbar />
+        <AccountNav />
             <div className="sellerContainer">
                 <div className="sellerProfile">
                     <div className="profiless">

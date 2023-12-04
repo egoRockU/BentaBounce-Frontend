@@ -35,9 +35,11 @@ const Login = () => {
         }).then((res)=>{
             switch (res.data["status"]){
                 case "success":
-                    sessionStorage.setItem("user_id", res.data["user_id"])
-                    sessionStorage.setItem("username", res.data["username"])
+                    localStorage.setItem("isLoggedIn", true)
+                    localStorage.setItem("user_id", res.data["user_id"])
+                    localStorage.setItem("username", res.data["username"])
                     alert (res.data["message"])
+                    navigate('/')
                     break
                 case "failed":
                     alert (res.data["message"])
@@ -59,9 +61,11 @@ const Login = () => {
         }).then((res)=>{
             switch (res.data["status"]){
                 case "success":
-                    sessionStorage.setItem("user_id", res.data["user_id"])
-                    sessionStorage.setItem("username", res.data["username"])
+                    localStorage.setItem("isLoggedIn", true)
+                    localStorage.setItem("user_id", res.data["user_id"])
+                    localStorage.setItem("username", res.data["username"])
                     alert (res.data["message"])
+                    navigate('/')
                     break
                 case "failed":
                     alert ("Account NOT registered")

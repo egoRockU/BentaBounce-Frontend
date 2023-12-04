@@ -4,19 +4,14 @@ import shopping from "../img/shoping.png"
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { checkIsLoggedIn } from "../utils/checkIsLoggedIn";
 
-const Navbar = () => {
+const AccountNav = () => {
 
     const [click, setClick] = useState(true)
     const navigate = useNavigate()
 
     const clickLogo = () => {
         navigate("/")
-    }
-
-    const clickLogin = () => {
-        navigate("/login")
     }
 
     const searchClick = () => {
@@ -27,8 +22,9 @@ const Navbar = () => {
         navigate("/shopping")
     }
 
-    const clickAccount = () => {
-        navigate("/editsellerprofile")
+    const clickLogOut = () => {
+        localStorage.clear();
+        navigate('/login')
     }
 
     
@@ -41,8 +37,7 @@ const Navbar = () => {
                 </button><input id="searchBar" className={click ? "disabled" : ""} type="text" />
                 <h1 className="lgo" onClick={clickLogo}>BENTABOUNCE</h1>
                 <div className="account">
-                    {checkIsLoggedIn() && <button className="account" onClick={clickAccount}><img src={account} />Account</button>}
-                    {!checkIsLoggedIn() && <button className="account" onClick={clickLogin}><img src={account} />Log In</button>}
+                    <button className="account" onClick={clickLogOut}><img src={account} />Log Out</button>
                     <button className="shopping" onClick={clickShopping}><img src={shopping} />Shopping</button>
                 </div>
             </nav>
@@ -52,4 +47,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default AccountNav
