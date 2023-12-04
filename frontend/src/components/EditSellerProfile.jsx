@@ -1,27 +1,26 @@
-import "./seller.css"
-import Profile from "../../../img/pf.png"
-import Navbar from "../../../components/Navbar"
-import GridItem from "../../../components/GridItem"
-import bag from "../../../img/14.png"
-import jagger from "../../../img/15.png"
-import glasses from "../../../img/16.png"
-import hoodie from "../../../img/yellow.png"
-import scarf from "../../../img/top-product.png"
-import nikerepel from "../../../img/nikerepel.png"
-import nikeair from "../../../img/nikeair.png"
-import dressgreen from "../../../img/dressgreen.png"
-import Footer from "../../../components/Footer"
+import Profile from "../img/pf.png"
+import Navbar from "../components/Navbar"
+import bag from "../img/14.png"
+import jagger from "../img/15.png"
+import glasses from "../img/16.png"
+import hoodie from "../img/yellow.png"
+import scarf from "../img/top-product.png"
+import nikerepel from "../img/nikerepel.png"
+import nikeair from "../img/nikeair.png"
+import dressgreen from "../img/dressgreen.png"
+import Footer from "../components/Footer"
+import { BiEdit } from "react-icons/bi";
+import EditGridItem from "./EditGridItem"
 
-
-const Seller = () => {
-
-    return (
+const EditSellerProfile = () => {
+    return ( 
         <>
-            <Navbar />
+        <Navbar />
             <div className="sellerContainer">
                 <div className="sellerProfile">
                     <div className="profiless">
                         <img src={Profile} className="profilepic"/>
+                        <BiEdit size={25} className="sellerediticon"/>
                     </div>
                     <div className="descriptions">
                         <h1 className="userName">Leansel</h1>
@@ -40,56 +39,58 @@ const Seller = () => {
             <h1 className="title">
                 Here's What I Sell
             </h1>
-            <div className="sellercategory">
-                <div className="sellerproducts">
-                    <p>All Products</p>
+            <div className="editsellercategory">
+                <div className="editsellerproducts">
+                    <a href="#">All Products</a>
+                    <button>Add My Product</button>
                 </div>
             </div>
             
             <div className="grid-container">
-                <GridItem
+                <EditGridItem
                     picture={jagger}
                     desc= 'Adicolor Classics Joggers'
                     name= 'Dress'
                     price= '63.85'
+                    
                 />
-                <GridItem
+                <EditGridItem
                     picture={bag}
                     desc= 'Nike Sportswear Futura Luxe'
                     name= 'Bag'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={scarf}
                     desc= 'Geometric print Scarf'
                     name= 'Scarf'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={hoodie}
                     desc= 'Yellow Reserved Hoodie'
                     name= 'Dress'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={dressgreen}
                     desc= 'Basic Dress Green'
                     name= 'Dress'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={nikeair}
                     desc= 'Nike Air Zoom Pegasus'
                     name= 'Shoe'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={nikerepel}
                     desc= 'Nike Repel Miler'
                     name= 'Dress'
                     price= '63.85'
                 />
-                <GridItem
+                <EditGridItem
                     picture={glasses}
                     desc= 'Nike Sportswear Futura Luxe'
                     name= 'Glasses'
@@ -100,7 +101,7 @@ const Seller = () => {
 
         <Footer />
         </>
-    )
+     );
 }
-
-export default Seller
+ 
+export default EditSellerProfile;

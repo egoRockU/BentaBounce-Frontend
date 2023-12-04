@@ -76,15 +76,16 @@
     margin-top: 81px;
 }
 
-.section2 .category{
+.section2 .sellercategory{
     font-size: 1em;
     width: 100%;
 }
 
-.section2 .category .products a{
+.section2 .sellercategory .sellerproducts p{
     font-size: 1em;
     text-decoration: none;
     color: black;
+    font-weight: 700;
 }
 
 .section2 .filter{

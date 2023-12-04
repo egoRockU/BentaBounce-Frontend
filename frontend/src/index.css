@@ -32,3 +32,38 @@
     transform: scale(1.1);
 }
 
+
+.sellerContainer .sellerProfile .profiless {
+    position: relative;
+}
+
+.sellerContainer .sellerProfile .profiless .sellerediticon {
+    position: absolute;
+    bottom: 2rem;
+    right: .8rem;
+    background: white;
+    border: 1px rgb(136, 135, 135) solid;
+    border-radius: 100%;
+}
+
+.sellerContainer .sellerProfile .profiless .sellerediticon:hover {
+    transform: scale(1.1);
+}
+
+.editsellerproducts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editsellerproducts a {
+    text-decoration: none;
+    color: black;
+}
+
+.editsellerproducts button {
+    padding: 0.5rem 1.3rem;
+    background: #1E2832;
+    color: white;
+    border: none;
+}
+

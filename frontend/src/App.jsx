@@ -9,6 +9,8 @@ import StoreView from "./components/StoreView"
 import EditProduct from "./components/EditProduct"
 import AddProduct from "./components/AddProduct"
 import SellerProfile from "./components/SellerProfile"
+import EditSellerProfile from "./components/EditSellerProfile"
+import EditGridItem from "./components/EditGridItem"
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
         <Route path="/editproduct" element={<EditProduct/>} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/sellerprofile" element={<SellerProfile />} />
+        <Route path="/editsellerprofile"  element={<EditSellerProfile />} />
+        <Route path="/editgriditem"  element={<EditGridItem />} />
       </Routes>
     </BrowserRouter>
   )
