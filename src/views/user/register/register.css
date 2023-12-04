@@ -10,6 +10,12 @@ nav {
 nav .logo {
     cursor: pointer;
 }
+.container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    height: fit-content;
+    padding: 24px;
+}
 
 .pattern {
     position: absolute;

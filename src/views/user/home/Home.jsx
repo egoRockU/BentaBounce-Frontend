@@ -1,5 +1,4 @@
 import "./home.css"
-import { useNavigate } from "react-router-dom"
 import girlBackground from "../../../img/19.png"
 import Basket from "../../../img/basket.png"
 import filter from "../../../img/filter.png"
@@ -15,7 +14,7 @@ import GridItem from "../../../components/GridItem"
 import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
 
-import { useState } from "react"
+
 
 const Home = () => {
 
@@ -34,7 +33,7 @@ const Home = () => {
                 <a href="http://">Others</a>
             </menu>
 
-            <landing>
+            <div className="landing">
                 <div className="left-side">
                     <h1>Lorem Ipsum</h1>
                     <h3>you can explore ans shop many differnt collection
@@ -44,14 +43,14 @@ const Home = () => {
                 <div className="right-side">
                     <img src={girlBackground}/>
                 </div>
-            </landing>
+            </div>
         </section>
         <section className="section2">
             <h1 className="title">
                 Discover More
             </h1>
-            <div className="categoriess">
-                <div className="productss">
+            <div className="category">
+                <div className="products">
                     <a href="#">All Products</a>
                     <a href="#">T-shirt</a>
                     <a href="#">Hoodies</a>

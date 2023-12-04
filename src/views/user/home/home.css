@@ -73,7 +73,7 @@ menu a {
     display: flex;
 }
 
-landing {
+.landing {
     display: flex;
     margin: 0 auto;
     width: 70vw;
@@ -81,16 +81,16 @@ landing {
     font-family: 'Roboto', sans-serif;
 }
 
-landing h1 {
+.landing h1 {
     font-size: 4.625em;
 }
 
-landing h3 {
+.landing h3 {
     font-size: 1.875em;
     margin: 50px 0;
 }
 
-landing .left-side {
+.landing .left-side {
     margin: 100px 0;
 }
 
@@ -121,14 +121,14 @@ landing .left-side {
     margin-top: 81px;
 }
 
-.section2 .categoriess{
+.section2 .category{
     display: flex ;
     font-size: 1em;
     justify-content: space-between;
 }
 
 
-.section2 .categoriess .productss a{
+.section2 .category .products a{
     padding: 0 10px;
     font-size: 1em;
     text-decoration: none;

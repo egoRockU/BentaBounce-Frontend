@@ -25,8 +25,9 @@ nav .logo {
     width: 33.125em;
     height: 35em;
     align-items: center;
-    margin: 5rem auto;
+    margin: 0 auto;
     background: rgba(242, 242, 242, 1);
+
 }
 
 .container .modal {
@@ -101,12 +102,9 @@ nav .logo {
     height: 53.85px;
     top: 609px;
     left: 861px;
-    border-radius: 3px;
-    border: 2px solid rgba(191, 191, 191, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--white);
     cursor: pointer;
     margin: 23px auto 0 auto;
     display: flex;
