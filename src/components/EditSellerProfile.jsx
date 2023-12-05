@@ -1,4 +1,4 @@
-import Profile from "../img/pf.png"
+import Profile from "../img/profile.jpg"
 import AccountNav from "./AccountNav"
 import bag from "../img/14.png"
 import jagger from "../img/15.png"
@@ -11,25 +11,72 @@ import dressgreen from "../img/dressgreen.png"
 import Footer from "../components/Footer"
 import { BiEdit } from "react-icons/bi";
 import EditGridItem from "./EditGridItem"
+import axios from "axios"
+import { useState, useEffect } from "react"
 
 const EditSellerProfile = () => {
+
+    const userId = localStorage.getItem("user_id")
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [photo, setPhoto] = useState()
+    const [bio, setBio] = useState('')
+    
+    useEffect(()=>{
+        getUser()
+    },[photo])
+    
+    const getUser = async() => {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/profile.php', {'user_id': userId},{
+        headers : {
+            "ngrok-skip-browser-warning": "8888"
+        }}
+        ).then((res)=>{
+            setUsername(res.data["username"])
+            setEmail(res.data["email"])
+            setPhoto(res.data["photo"])
+            setBio(res.data["bio"])
+        })
+    }
+
+    const handleProfileChange = (e) => {
+        updateProfilePic(e.target.files[0])
+    }
+    
+    const updateProfilePic = (file) => {
+        const formData = new FormData()
+        formData.append("image", file)
+        formData.append("user_id", userId)
+        
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/changePfp.php', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then(()=>{
+            getUser()
+        })
+    }
+
     return ( 
         <>
         <AccountNav />
             <div className="sellerContainer">
                 <div className="sellerProfile">
                     <div className="profiless">
-                        <img src={Profile} className="profilepic"/>
-                        <BiEdit size={25} className="sellerediticon"/>
+                        {photo && <img src={`data:image/jpeg;base64, ${photo}`} className="profilepic"/>}
+                        {!photo && <img src={Profile} className="profilepic"/>}
+                        <label htmlFor="image-input">
+                            <BiEdit size={25} className="sellerediticon"/>
+                        </label>
+                        <input id="image-input" type="file" name="image" accept="image/png, image/jpeg" onChange={handleProfileChange}/>
                     </div>
                     <div className="descriptions">
-                        <h1 className="userName">Leansel</h1>
+                        <h1 className="userName">{username}</h1>
                         <div className="profiles">
                             <p className="profileText">Profile</p>
-                            <p className="profileDesc">Greetings, everyone. My name is Bard, and I'm a large language model from Google AI. 
-                            I'm trained on a massive dataset of text and code, and I can generate text, translate languages,
-                            write different kinds of creative content, and answer your questions in an informative way. 
-                            I'm still under development, but I'm always learning new things. I'm excited to meet you all and help you with your tasks and questions.</p>
+                            {!bio && <p className="profileDesc">{email}</p>}
+                            {bio && <p className="profileDesc">{bio}</p>}
                         </div>
                     </div>
                 </div>
@@ -37,7 +84,7 @@ const EditSellerProfile = () => {
 
             <section className="section2">
             <h1 className="title">
-                Here's What I Sell
+                Here&apos;s What I Sell
             </h1>
             <div className="editsellercategory">
                 <div className="editsellerproducts">

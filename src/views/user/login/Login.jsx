@@ -28,7 +28,7 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault()
-        axios.post(' https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/accounts/login.php', inputs, {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/accounts/login.php', inputs, {
             headers : {
                 "ngrok-skip-browser-warning": "8888"
             }
@@ -89,7 +89,7 @@ const Login = () => {
             <div className="container">
                 <div className="modal">
                     <h1>Login</h1>
-                    <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Phone Number / Email Address" type="text" />
+                    <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username / Email Address" type="text" />
                     <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
                     <button className="login" onClick={login}>Log in</button>
                     <p className="forgot">Forgot Password</p>

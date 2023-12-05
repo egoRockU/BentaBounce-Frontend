@@ -16,6 +16,10 @@
     height: 13.375rem;
 }
 
+.profiless > input {
+    display: none;
+}
+
 .profilepic {
     border-radius: 100%;
     width: 13.375rem;

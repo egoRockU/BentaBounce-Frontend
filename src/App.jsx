@@ -16,29 +16,26 @@ import PageNotFound from "./components/PageNotFound"
 
 function App() {
 
-  const isLoggedIn = checkIsLoggedIn()
 
   return (
     <BrowserRouter>
+      <Routes>
         {
-          !isLoggedIn && 
+          !checkIsLoggedIn() && 
           <>
-            <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/seller" element={<Seller />}/>
             <Route path="/productView" element={<ProductView />} />
             <Route path="/storeview" element={<StoreView/>} />
-            <Route path="*" element={<PageNotFound/>}/>
-            </Routes>
+            <Route path="*" element={<Login />}/>
           </>
         }
         
         {
-          isLoggedIn && 
+          checkIsLoggedIn() && 
           <>
-            <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/seller" element={<Seller />}/>
@@ -52,9 +49,9 @@ function App() {
             <Route path="/editsellerprofile"  element={<EditSellerProfile />} />
             <Route path="/editgriditem"  element={<EditGridItem />} />
             <Route path="*" element={<PageNotFound/>}/>
-            </Routes>
           </>
         }
+        </Routes>
     </BrowserRouter>
   )
 }
