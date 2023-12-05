@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"
 
-const GridItem = ({picture, desc, name, price}) => {
+const GridItem = ({sellerId, itemId, picture, desc, name, price}) => {
 
     const navigate = useNavigate()
     
     const clickProduct = () => {
-        navigate('/productView')
+        navigate(`/${sellerId}/${itemId}/productview`)
     }
 
     return (

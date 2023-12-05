@@ -26,8 +26,8 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
-            <Route path="/seller" element={<Seller />}/>
-            <Route path="/productView" element={<ProductView />} />
+            <Route path="/:sellerId/seller" element={<Seller />}/>
+            <Route path="/:sellerId/:itemId/productView" element={<ProductView />} />
             <Route path="/storeview" element={<StoreView/>} />
             <Route path="*" element={<Login />}/>
           </>
@@ -38,8 +38,8 @@ function App() {
           <>
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path="/seller" element={<Seller />}/>
-            <Route path="/productView" element={<ProductView />} />
+            <Route path="/:sellerId/seller" element={<Seller />}/>
+            <Route path="/:sellerId/:itemId/productView" element={<ProductView />} />
             <Route path="/storeview" element={<StoreView/>} />
 
             <Route path="/shopping" element={<Shopping />} />

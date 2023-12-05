@@ -1,5 +1,5 @@
 import bag from "../img/14.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { CgSoftwareUpload } from "react-icons/cg";
 import StoreView from './StoreView'
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
 
     const userId = localStorage.getItem("user_id")
+    const [seller, setSeller] = useState([])
     const [image, setImage] = useState(null)
     const [imageFile, setImageFile] = useState(null)
     const [name, setName] = useState()
@@ -17,6 +18,10 @@ const AddProduct = () => {
     const [category, setCategory] = useState()
     const [stocks, setStocks] = useState()
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        getSeller()
+    },[])
 
     const imageChange = (e) => {
         setImage(URL.createObjectURL(e.target.files[0]))
@@ -46,6 +51,16 @@ const AddProduct = () => {
             navigate('/editsellerprofile')
         })
         
+    }
+
+    const getSeller = () => {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/profile.php', {'user_id': userId}, {
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setSeller(res.data)
+        })
     }
 
     return ( 
@@ -92,7 +107,7 @@ const AddProduct = () => {
                     </form>
                 </div>
             </div>
-            <StoreView />
+            <StoreView seller={seller}/> 
         </>
     );
 }

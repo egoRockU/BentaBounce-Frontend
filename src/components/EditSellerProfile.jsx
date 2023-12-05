@@ -1,6 +1,5 @@
 import Profile from "../img/profile.jpg"
 import AccountNav from "./AccountNav"
-import jagger from "../img/15.png"
 import Footer from "../components/Footer"
 import { BiEdit } from "react-icons/bi";
 import EditGridItem from "./EditGridItem"

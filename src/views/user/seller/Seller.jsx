@@ -1,19 +1,54 @@
 import "./seller.css"
-import Profile from "../../../img/pf.png"
+import Profile from "../../../img/profile.jpg"
 import Navbar from "../../../components/Navbar"
 import GridItem from "../../../components/GridItem"
-import bag from "../../../img/14.png"
-import jagger from "../../../img/15.png"
-import glasses from "../../../img/16.png"
-import hoodie from "../../../img/yellow.png"
-import scarf from "../../../img/top-product.png"
-import nikerepel from "../../../img/nikerepel.png"
-import nikeair from "../../../img/nikeair.png"
-import dressgreen from "../../../img/dressgreen.png"
 import Footer from "../../../components/Footer"
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 
 const Seller = () => {
+
+    const { sellerId } = useParams()
+    const [items, setItems] = useState([])
+    const [username, setUsername] = useState('')
+    const [email, setEmail] = useState('')
+    const [photo, setPhoto] = useState()
+    const [bio, setBio] = useState('')
+
+    useEffect(()=>{
+        getUser()
+        getItems()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    const getUser = async() => {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/profile.php', {'user_id': sellerId},{
+        headers : {
+            "ngrok-skip-browser-warning": "8888"
+        }}
+        ).then((res)=>{
+            setUsername(res.data["username"])
+            setEmail(res.data["email"])
+            setPhoto(res.data["photo"])
+            setBio(res.data["bio"])
+        })
+    }
+
+    const getItems = () => {
+        const input = {
+            'category': 'user', 
+            'userId': sellerId
+        }
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', input, {
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setItems(res.data)
+        })
+    }
 
     return (
         <>
@@ -21,16 +56,15 @@ const Seller = () => {
             <div className="sellerContainer">
                 <div className="sellerProfile">
                     <div className="profiless">
-                        <img src={Profile} className="profilepic"/>
+                        {photo && <img src={`data:image/jpeg;base64, ${photo}`} className="profilepic"/>}
+                        {!photo && <img src={Profile} className="profilepic"/>}
                     </div>
                     <div className="descriptions">
-                        <h1 className="userName">Leansel</h1>
+                        <h1 className="userName">{username}</h1>
                         <div className="profiles">
                             <p className="profileText">Profile</p>
-                            <p className="profileDesc">Greetings, everyone. My name is Bard, and I'm a large language model from Google AI. 
-                            I'm trained on a massive dataset of text and code, and I can generate text, translate languages,
-                            write different kinds of creative content, and answer your questions in an informative way. 
-                            I'm still under development, but I'm always learning new things. I'm excited to meet you all and help you with your tasks and questions.</p>
+                            {!bio && <p className="profileDesc">{email}</p>}
+                            {bio && <p className="profileDesc">{bio}</p>}
                         </div>
                     </div>
                 </div>
@@ -38,7 +72,7 @@ const Seller = () => {
 
             <section className="section2">
             <h1 className="title">
-                Here's What I Sell
+                Here&apos;s What I Sell
             </h1>
             <div className="sellercategory">
                 <div className="sellerproducts">
@@ -47,54 +81,17 @@ const Seller = () => {
             </div>
             
             <div className="grid-container">
-                <GridItem
-                    picture={jagger}
-                    desc= 'Adicolor Classics Joggers'
-                    name= 'Dress'
-                    price= '63.85'
+                {items.map((item, key)=>
+                    <GridItem
+                    key = {key}
+                    sellerId = {sellerId}
+                    itemId = {item.id}
+                    picture={item.image}
+                    desc= {item.details}
+                    name= {item.name}
+                    price= {item.price}
                 />
-                <GridItem
-                    picture={bag}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Bag'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={scarf}
-                    desc= 'Geometric print Scarf'
-                    name= 'Scarf'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={hoodie}
-                    desc= 'Yellow Reserved Hoodie'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={dressgreen}
-                    desc= 'Basic Dress Green'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={nikeair}
-                    desc= 'Nike Air Zoom Pegasus'
-                    name= 'Shoe'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={nikerepel}
-                    desc= 'Nike Repel Miler'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={glasses}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Glasses'
-                    price= '63.85'
-                />
+                )}
             </div>
         </section>
 

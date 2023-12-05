@@ -1,8 +1,7 @@
 import { IoBagAdd } from "react-icons/io5";
-import bag from "../img/14.png";
 import { useState } from "react";
 
-const ProductView = () => {
+const ProductView = ({item}) => {
 
     const [count, setCount] = useState(1);
 
@@ -17,19 +16,18 @@ const ProductView = () => {
         
             <div className="containerr">
                 <div className="picture">
-                    <img src={bag}/>
+                    <img src={`data:image/jpeg;base64, ${item.image}`}/>
                 </div>
                 <div className="description">
-                    <h1 className="name">Product Name</h1>
-                    <p className="price">PHP 120.00</p>
+                    <h1 className="name">{item.name}</h1>
+                    <p className="price">PHP {item.price}</p>
                     <div className="desc">
                         <p className="descTitle">Description</p>
-                        <p className="descText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p className="descText">{item.details}</p>
                     </div>
                     <div className="category">
                         <p className="descTitle">Category</p>
-                        <p className="descText">Bag</p>
+                        <p className="descText">{item.category_name}</p>
                     </div>
                     <div className="quantity">
                         <div className="quantityItem">
@@ -42,7 +40,7 @@ const ProductView = () => {
                         </div>
                         <div className="stocks">
                             <p className="stocksdesc">Stocks Available</p>
-                            <p>100</p>
+                            <p>{item.stocks}</p>
                         </div>
                     </div>
                     <button className="addToCart"><IoBagAdd />Add To Shopping List</button>

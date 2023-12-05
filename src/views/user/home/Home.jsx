@@ -25,7 +25,6 @@ const Home = () => {
             }
         }).then((res)=>{
             setItems(res.data)
-            console.log(res.data)
         })
     }
 
@@ -76,6 +75,8 @@ const Home = () => {
                 {items.map((item, key)=>
                     <GridItem
                     key = {key}
+                    sellerId = {item.user_id}
+                    itemId = {item.id}
                     picture={item.image}
                     desc= {item.details}
                     name= {item.name}

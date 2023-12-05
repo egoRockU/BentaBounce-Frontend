@@ -6,7 +6,7 @@ const EditGridItem = ({picture, desc, name, price}) => {
     const navigate = useNavigate()
     
     const clickProduct = () => {
-        navigate('/productView')
+        navigate('/editproduct')
     }
 
     return (
