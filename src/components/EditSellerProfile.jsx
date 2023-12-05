@@ -24,7 +24,7 @@ const EditSellerProfile = () => {
     
     useEffect(()=>{
         getUser()
-    },[photo])
+    },[])
     
     const getUser = async() => {
         axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/profile.php', {'user_id': userId},{
@@ -58,6 +58,19 @@ const EditSellerProfile = () => {
         })
     }
 
+    const handleOnSubmitBio = (e) => {
+        e.preventDefault()
+        console.log(bio)
+
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/changeBio.php', {'bio': bio,'user_id': userId},{
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+        }}).then((res)=>{
+            alert(res.data)
+            console.log(res.data)
+        })
+    }
+
     return ( 
         <>
         <AccountNav />
@@ -75,8 +88,14 @@ const EditSellerProfile = () => {
                         <h1 className="userName">{username}</h1>
                         <div className="profiles">
                             <p className="profileText">Profile</p>
-                            {!bio && <p className="profileDesc">{email}</p>}
-                            {bio && <p className="profileDesc">{bio}</p>}
+                            <form onSubmit={handleOnSubmitBio}>
+                                <input name="bio" className="profileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
+                                <input type="submit"  hidden/>
+                            </form>
+                        </div>
+                        <div className="profiles">
+                            <p className="profileText">Email</p>
+                            <p className="profileDesc">{email}</p>
                         </div>
                     </div>
                 </div>
