@@ -13,6 +13,7 @@ import { BiEdit } from "react-icons/bi";
 import EditGridItem from "./EditGridItem"
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 const EditSellerProfile = () => {
 
@@ -21,9 +22,11 @@ const EditSellerProfile = () => {
     const [email, setEmail] = useState('')
     const [photo, setPhoto] = useState()
     const [bio, setBio] = useState('')
-    
+    const navigate = useNavigate()
+
     useEffect(()=>{
         getUser()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
     const getUser = async() => {
@@ -71,6 +74,10 @@ const EditSellerProfile = () => {
         })
     }
 
+    const handleAddProduct = () => {
+        navigate('/addproduct')
+    }
+
     return ( 
         <>
         <AccountNav />
@@ -108,7 +115,7 @@ const EditSellerProfile = () => {
             <div className="editsellercategory">
                 <div className="editsellerproducts">
                     <a href="#">All Products</a>
-                    <button>Add My Product</button>
+                    <button onClick={handleAddProduct}>Add My Product</button>
                 </div>
             </div>
             
