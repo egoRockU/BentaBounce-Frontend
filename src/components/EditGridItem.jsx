@@ -12,7 +12,7 @@ const EditGridItem = ({picture, desc, name, price}) => {
     return (
         <div className="grid-item" >
             <div className="picture">
-                <img src={picture} onClick={clickProduct} />
+                <img src={`data:image/jpeg;base64, ${picture}`} onClick={clickProduct} />
                 <BiEdit size={20} className="editicon"/>
             </div>
             <div className="desc">

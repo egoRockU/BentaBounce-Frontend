@@ -11,7 +11,7 @@ const GridItem = ({picture, desc, name, price}) => {
     return (
         <div className="grid-item" >
             <div className="picture">
-                <img src={picture} onClick={clickProduct} />
+                <img src={`data:image/jpeg;base64, ${picture}`} onClick={clickProduct} />
             </div>
             <div className="desc">
                 <p className="productName">{desc}</p>

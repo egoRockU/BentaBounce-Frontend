@@ -1,13 +1,6 @@
 import Profile from "../img/profile.jpg"
 import AccountNav from "./AccountNav"
-import bag from "../img/14.png"
 import jagger from "../img/15.png"
-import glasses from "../img/16.png"
-import hoodie from "../img/yellow.png"
-import scarf from "../img/top-product.png"
-import nikerepel from "../img/nikerepel.png"
-import nikeair from "../img/nikeair.png"
-import dressgreen from "../img/dressgreen.png"
 import Footer from "../components/Footer"
 import { BiEdit } from "react-icons/bi";
 import EditGridItem from "./EditGridItem"
@@ -18,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 const EditSellerProfile = () => {
 
     const userId = localStorage.getItem("user_id")
+    const [userItems, setUserItems] = useState([])
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [photo, setPhoto] = useState()
@@ -26,6 +20,7 @@ const EditSellerProfile = () => {
 
     useEffect(()=>{
         getUser()
+        getUserItems()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
@@ -39,6 +34,20 @@ const EditSellerProfile = () => {
             setEmail(res.data["email"])
             setPhoto(res.data["photo"])
             setBio(res.data["bio"])
+        })
+    }
+
+    const getUserItems = () => {
+        const input = {
+            'category': 'user', 
+            'userId': localStorage.getItem('user_id')
+        }
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', input, {
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setUserItems(res.data)
         })
     }
 
@@ -120,55 +129,15 @@ const EditSellerProfile = () => {
             </div>
             
             <div className="grid-container">
-                <EditGridItem
-                    picture={jagger}
-                    desc= 'Adicolor Classics Joggers'
-                    name= 'Dress'
-                    price= '63.85'
-                    
+            {userItems.map((item, key)=>
+                    <EditGridItem
+                    key = {key}
+                    picture={item.image}
+                    desc= {item.details}
+                    name= {item.name}
+                    price= {item.price}
                 />
-                <EditGridItem
-                    picture={bag}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Bag'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={scarf}
-                    desc= 'Geometric print Scarf'
-                    name= 'Scarf'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={hoodie}
-                    desc= 'Yellow Reserved Hoodie'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={dressgreen}
-                    desc= 'Basic Dress Green'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={nikeair}
-                    desc= 'Nike Air Zoom Pegasus'
-                    name= 'Shoe'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={nikerepel}
-                    desc= 'Nike Repel Miler'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <EditGridItem
-                    picture={glasses}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Glasses'
-                    price= '63.85'
-                />
+                )}
             </div>
         </section>
 

@@ -2,26 +2,32 @@ import "./home.css"
 import girlBackground from "../../../img/19.png"
 import Basket from "../../../img/basket.png"
 import filter from "../../../img/filter.png"
-import bag from "../../../img/14.png"
-import jagger from "../../../img/15.png"
-import glasses from "../../../img/16.png"
-import hoodie from "../../../img/yellow.png"
-import scarf from "../../../img/top-product.png"
-import nikerepel from "../../../img/nikerepel.png"
-import nikeair from "../../../img/nikeair.png"
-import dressgreen from "../../../img/dressgreen.png"
 import GridItem from "../../../components/GridItem"
 import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
-import { useNavigate } from "react-router"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 
 
 const Home = () => {
-    const navigate = useNavigate()
 
-    navigate(0)
+    const [items, setItems] = useState([])
     
+    useEffect(()=>{
+        getItems()
+    }, [])
+    
+    const getItems = () =>{
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', {'category': 'all'}, {
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setItems(res.data)
+            console.log(res.data)
+        })
+    }
 
     return (
         <>
@@ -67,54 +73,15 @@ const Home = () => {
             </div>
             
             <div className="grid-container">
-                <GridItem
-                    picture={jagger}
-                    desc= 'Adicolor Classics Joggers'
-                    name= 'Dress'
-                    price= '63.85'
+                {items.map((item, key)=>
+                    <GridItem
+                    key = {key}
+                    picture={item.image}
+                    desc= {item.details}
+                    name= {item.name}
+                    price= {item.price}
                 />
-                <GridItem
-                    picture={bag}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Bag'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={scarf}
-                    desc= 'Geometric print Scarf'
-                    name= 'Scarf'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={hoodie}
-                    desc= 'Yellow Reserved Hoodie'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={dressgreen}
-                    desc= 'Basic Dress Green'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={nikeair}
-                    desc= 'Nike Air Zoom Pegasus'
-                    name= 'Shoe'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={nikerepel}
-                    desc= 'Nike Repel Miler'
-                    name= 'Dress'
-                    price= '63.85'
-                />
-                <GridItem
-                    picture={glasses}
-                    desc= 'Nike Sportswear Futura Luxe'
-                    name= 'Glasses'
-                    price= '63.85'
-                />
+                )}
             </div>
         </section>
 
