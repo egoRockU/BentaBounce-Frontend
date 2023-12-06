@@ -1,4 +1,4 @@
-import bag from "../img/14.png";
+import choosePhoto from "../img/insertImage.jpg";
 import { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { CgSoftwareUpload } from "react-icons/cg";
@@ -75,7 +75,7 @@ const AddProduct = () => {
             <h1 className="edith1">Add Product</h1>
             <div className="containerr">
                 <div className="picture">
-                    { !image && <img src={bag}/>}
+                    { !image && <img src={choosePhoto}/>}
                     { image && <img src={image}/>}
                     <label htmlFor="image-input">
                         <CgSoftwareUpload size={30} className="editicon"/>

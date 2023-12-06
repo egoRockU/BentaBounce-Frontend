@@ -1,3 +1,4 @@
+import choosePhoto from "../img/insertImage.jpg";
 import { IoBagAdd } from "react-icons/io5";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,8 @@ const ProductView = ({item}) => {
         
             <div className="containerr">
                 <div className="picture">
-                    <img src={`data:image/jpeg;base64, ${item.image}`}/>
+                    {item.image && <img src={`data:image/jpeg;base64, ${item.image}`}/>}
+                    {!item.image && <img src={choosePhoto}/>}
                 </div>
                 <div className="description">
                     <h1 className="name">{item.name}</h1>
