@@ -42,15 +42,20 @@ const AddProduct = () => {
         formData.append("stocks", stocks)
         formData.append("user_id", userId)
         
-        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/addItems.php', formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "ngrok-skip-browser-warning": "8888"
-            }
-        }).then(()=>{
-            alert('Item added successfully')
-            navigate('/editsellerprofile')
-        })
+        if(imageFile){
+            axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/addItems.php', formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "ngrok-skip-browser-warning": "8888"
+                }
+            }).then(()=>{
+                alert('Item added successfully')
+                navigate('/editsellerprofile')
+            })
+        } else {
+            alert('Please upload an image.')
+        }
+
         
     }
 
@@ -70,7 +75,6 @@ const AddProduct = () => {
             <h1 className="edith1">Add Product</h1>
             <div className="containerr">
                 <div className="picture">
-                <form onSubmit={handleSubmit}>
                     { !image && <img src={bag}/>}
                     { image && <img src={image}/>}
                     <label htmlFor="image-input">
@@ -79,7 +83,7 @@ const AddProduct = () => {
                     <input id="image-input" type="file" name="image" accept="image/png, image/jpeg" onChange={imageChange} required hidden/>
                 </div>
                 <div className="description">
-                    
+                    <form onSubmit={handleSubmit}>
                         <h1 className="name">Product Name</h1>
                         <input className="name" type="text" name="productName" placeholder="Product Name" onChange={(e)=>setName(e.target.value)} required></input>
                         <p className="price">PHP</p><input className="price" type="number" step="0.05" name="price" onChange={(e)=>setPrice(e.target.value)} required></input>
