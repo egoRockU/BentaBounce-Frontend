@@ -3,6 +3,7 @@ import { IoBagRemoveOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -126,6 +127,12 @@ const Product = ({cart_id, item_id, picture, productName, Description, price, st
                 value={userPay}
                 onChange={e=>setUserPay(e.target.value)}
             />
+            <DialogContentText align="center">
+                OR
+            </DialogContentText>
+            <PayPalScriptProvider options={{ clientId: "test" }}>
+                    <PayPalButtons style={{ layout: "horizontal" }} />
+                </PayPalScriptProvider>
             </DialogContent>
             <DialogActions>
             <Button onClick={closeModal}>Cancel</Button>
