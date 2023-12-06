@@ -11,6 +11,7 @@ import AddProduct from "./components/AddProduct"
 import SellerProfile from "./components/SellerProfile"
 import EditSellerProfile from "./components/EditSellerProfile"
 import EditGridItem from "./components/EditGridItem"
+import CategoryHome from "./views/user/home/CategoryHome"
 import { checkIsLoggedIn } from "./utils/checkIsLoggedIn"
 import PageNotFound from "./components/PageNotFound"
 
@@ -24,6 +25,7 @@ function App() {
           !checkIsLoggedIn() && 
           <>
             <Route path="/" element={<Home/>} />
+            <Route path="/:categoryId/categoryhome" element={<CategoryHome/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/:sellerId/seller" element={<Seller />}/>
@@ -37,6 +39,7 @@ function App() {
           checkIsLoggedIn() && 
           <>
             <Route path="/" element={<Home/>} />
+            <Route path="/:categoryId/categoryhome" element={<CategoryHome/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/:sellerId/seller" element={<Seller />}/>
             <Route path="/:sellerId/:itemId/productView" element={<ProductView />} />

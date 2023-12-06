@@ -34,13 +34,13 @@ const Home = () => {
             <Navbar />
 
             <menu>
-                <a href="http://">Jewelry & Accessories</a>
-                <a href="http://">Clothing & Shoes</a>
-                <a href="http://">Home & Living</a>
-                <a href="http://">Wedding & Party</a>
-                <a href="http://">Toys & Entertainment</a>
-                <a href="http://">Art & Collectibles</a>
-                <a href="http://">Others</a>
+                <a href="/1/categoryhome">Jewelry & Accessories</a>
+                <a href="/2/categoryhome">Clothing & Shoes</a>
+                <a href="/3/categoryhome">Home & Living</a>
+                <a href="/4/categoryhome">Wedding & Party</a>
+                <a href="/5/categoryhome">Toys & Entertainment</a>
+                <a href="/6/categoryhome">Art & Collectibles</a>
+                <a href="/7/categoryhome">Others</a>
             </menu>
 
             <div className="landing">
