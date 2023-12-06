@@ -4,11 +4,21 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({cart_id, picture, productName, Description, price, stocks, quantity}) => {
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+const Product = ({cart_id, item_id, picture, productName, Description, price, stocks, quantity}) => {
 
     const [count, setCount] = useState(Number(quantity))
     const [totalPrice, setTotalPrice] = useState()
+    const [userPay, setUserPay] = useState(0)
     const navigate = useNavigate()
+    const [show, setShow] = useState(false)
 
     useEffect(()=>{
         setTotalPrice(count * Number(price))
@@ -26,6 +36,33 @@ const Product = ({cart_id, picture, productName, Description, price, stocks, qua
         }
     }
 
+    const openModal = () => {
+        setShow(true)
+    }
+
+    const closeModal = () => {
+        setShow(false)
+    }
+
+    const checkOut = () => {
+        if (Number(userPay) === Number(totalPrice)){
+            const input = {
+                'cart_id': cart_id,
+                'item_id': item_id,
+                'count': count,
+                'stocks': stocks
+            }
+            axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/cart/checkOut.php', input, {
+                headers: {
+                    "ngrok-skip-browser-warning": "8888"
+                }
+            }).then(()=>{
+                alert(`${productName} has been checked out. Thank you for Buying!!`)
+                navigate(0)
+            })
+        }
+    }
+
 
     const removeItem = () => {
         if (confirm(`Are you sure you want to remove ${productName}?`)){
@@ -39,6 +76,8 @@ const Product = ({cart_id, picture, productName, Description, price, stocks, qua
             })
         }
     }
+
+
 
     return ( 
         <>
@@ -57,7 +96,7 @@ const Product = ({cart_id, picture, productName, Description, price, stocks, qua
                     PHP {totalPrice}
                 </div>
                 <div>
-                    <MdOutlineShoppingCartCheckout size="40"/>
+                    <MdOutlineShoppingCartCheckout size="40" onClick={openModal}/>
                 </div>
                 <div>
                     <IoBagRemoveOutline size="40" onClick={removeItem}/>
@@ -68,6 +107,31 @@ const Product = ({cart_id, picture, productName, Description, price, stocks, qua
                 <div className="line">
                     <hr/>
                 </div>
+
+
+        <Dialog open={show} onClose={closeModal}>
+            <DialogTitle>Check out</DialogTitle>
+            <DialogContent>
+            <DialogContentText>
+                Enter the right amount to proceed. (PHP {totalPrice})
+            </DialogContentText>
+            <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="PHP"
+                type="number"
+                fullWidth
+                variant="standard"
+                value={userPay}
+                onChange={e=>setUserPay(e.target.value)}
+            />
+            </DialogContent>
+            <DialogActions>
+            <Button onClick={closeModal}>Cancel</Button>
+            <Button onClick={checkOut}>CheckOut</Button>
+            </DialogActions>
+        </Dialog>
         </>
     );
 }

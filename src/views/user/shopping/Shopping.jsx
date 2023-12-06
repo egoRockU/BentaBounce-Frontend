@@ -42,6 +42,7 @@ const Shopping = () => {
                 <Product 
                 key={key}
                 cart_id={item.cart_id}
+                item_id={item.item_id}
                 picture={item.image}
                 productName= {item.name}
                 Description= {item.details}
