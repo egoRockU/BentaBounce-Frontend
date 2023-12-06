@@ -1,10 +1,29 @@
 import "./shopping.css"
 import Navbar from "../../../components/Navbar";
 import Product from "../../../components/Product";
-import bag from "../../../img/14.png"
-import shade from "../../../img/16.png"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Shopping = () => {
+
+    const [items, setItems] = useState([])
+
+    useEffect(()=>{
+        getItems()
+    }, [])
+
+    const getItems = () => {
+        const input = {
+            'user_id': localStorage.getItem('user_id')
+        }
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/cart/getCart.php', input, {
+            headers : {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setItems(res.data)
+        })
+    }
 
     return ( 
         <>
@@ -19,20 +38,18 @@ const Shopping = () => {
                 <p>Remove</p>
             </div>
             <div className="line"></div>
-            <Product 
-                picture={bag}
-                productName='Celine'
-                Description='BAG NA MALUPET'
-                price='1000.00'
-                quantity={1}
+            {items.map((item, key)=>
+                <Product 
+                key={key}
+                cart_id={item.cart_id}
+                picture={item.image}
+                productName= {item.name}
+                Description= {item.details}
+                price={item.price}
+                stocks={item.stocks}
+                quantity={item.quantity}
             />
-            <Product 
-                picture={shade}
-                productName='Shade ni john lloyd'
-                Description='Pangboso'
-                price='1000.00'
-                quantity={2}
-            />
+            )}
         </>
     );
 }

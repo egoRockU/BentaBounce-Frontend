@@ -1,14 +1,39 @@
 import { IoBagAdd } from "react-icons/io5";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ProductView = ({item}) => {
 
     const [count, setCount] = useState(1);
+    const navigate = useNavigate()
 
     const decrease = () => {
         if(count > 1) {
             setCount(count - 1)
         }
+    }
+    
+    const increase = () => {
+        if (count < item.stocks){
+            setCount(count + 1)
+        }
+    }
+
+    const addToCart = () => {
+        const inputs = {
+            'user_id': localStorage.getItem('user_id'),
+            'item_id': item.id,
+            'quantity': count
+        }
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/cart/addToCart.php', inputs, {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then(()=>{
+            alert('Item is now on shopping cart')
+            navigate('/shopping')
+        })
     }
 
     return ( 
@@ -35,7 +60,7 @@ const ProductView = ({item}) => {
                         <div className="totalItem">
                             <button onClick={decrease}>-</button>
                             <p>{count}</p>
-                            <button onClick={() => setCount(count + 1)}>+</button>
+                            <button onClick={increase}>+</button>
                         </div>
                         </div>
                         <div className="stocks">
@@ -43,7 +68,7 @@ const ProductView = ({item}) => {
                             <p>{item.stocks}</p>
                         </div>
                     </div>
-                    <button className="addToCart"><IoBagAdd />Add To Shopping List</button>
+                    <button className="addToCart" onClick={addToCart}><IoBagAdd />Add To Shopping List</button>
                 </div>
             </div>
         
