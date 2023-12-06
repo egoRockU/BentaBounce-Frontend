@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { BiEdit } from "react-icons/bi";
 
-const EditGridItem = ({picture, desc, name, price}) => {
+const EditGridItem = ({id, picture, desc, name, price}) => {
 
     const navigate = useNavigate()
     
     const clickProduct = () => {
-        navigate('/editproduct')
+        navigate(`/${id}/editproduct`)
     }
 
     return (

@@ -21,6 +21,7 @@ const AddProduct = () => {
 
     useEffect(()=>{
         getSeller()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const imageChange = (e) => {

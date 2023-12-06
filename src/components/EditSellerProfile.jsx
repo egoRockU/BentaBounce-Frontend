@@ -131,6 +131,7 @@ const EditSellerProfile = () => {
             {userItems.map((item, key)=>
                     <EditGridItem
                     key = {key}
+                    id = {item.id}
                     picture={item.image}
                     desc= {item.details}
                     name= {item.name}

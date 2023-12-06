@@ -43,7 +43,7 @@ function App() {
             <Route path="/storeview" element={<StoreView/>} />
 
             <Route path="/shopping" element={<Shopping />} />
-            <Route path="/editproduct" element={<EditProduct/>} />
+            <Route path="/:itemId/editproduct" element={<EditProduct/>} />
             <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/sellerprofile" element={<SellerProfile />} />
             <Route path="/editsellerprofile"  element={<EditSellerProfile />} />
