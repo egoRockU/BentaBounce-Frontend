@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const EditProduct = () => {
     
     const userId = localStorage.getItem("user_id")
+    const [categoryList, setCategoryList] = useState([])
     const [seller, setSeller] = useState([])
     const {itemId} = useParams()
     const [item, setItem] = useState([])
@@ -26,6 +27,7 @@ const EditProduct = () => {
     useEffect(()=>{
         getSeller()
         getItem()
+        getCategories()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -57,6 +59,18 @@ const EditProduct = () => {
             }
         }).then((res)=>{
             setSeller(res.data)
+        })
+    }
+
+    const getCategories = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/getCategoryList.php', {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setCategoryList(res.data)
+            console.log(res.data)
         })
     }
 
@@ -129,13 +143,9 @@ const EditProduct = () => {
                         <div className="category">
                             <p className="descTitle">Category</p>
                             <select name="category" value={category} onChange={(e)=>setCategory(e.target.value)}>
-                                    <option value="1">Jewerly & Accessories</option>
-                                    <option value="2">Clothing & Shoes</option>
-                                    <option value="3">Home & Living</option>
-                                    <option value="4">Wedding & Party</option>
-                                    <option value="5">Toys & Entertainment</option>
-                                    <option value="6">Art & Collectibles</option>
-                                    <option value="7">Others</option>
+                                {categoryList.map((cat, key)=>
+                                    <option value={cat.id} key={key}>{cat.category_name}</option>
+                                )}
                                 </select>
                         </div>
                         <div className="quantity">

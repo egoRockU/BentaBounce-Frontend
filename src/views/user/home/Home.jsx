@@ -13,9 +13,11 @@ import axios from "axios"
 const Home = () => {
 
     const [items, setItems] = useState([])
+    const [categoryList, setCategoryList] = useState([])
     
     useEffect(()=>{
         getItems()
+        getCategoriesList()
     }, [])
     
     const getItems = () =>{
@@ -28,19 +30,25 @@ const Home = () => {
         })
     }
 
+    const getCategoriesList = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/getCategoryList.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setCategoryList(res.data)
+        })
+    }
+
     return (
         <>
         <section className="section1">
             <Navbar />
 
             <menu>
-                <a href="/1/categoryhome">Jewelry & Accessories</a>
-                <a href="/2/categoryhome">Clothing & Shoes</a>
-                <a href="/3/categoryhome">Home & Living</a>
-                <a href="/4/categoryhome">Wedding & Party</a>
-                <a href="/5/categoryhome">Toys & Entertainment</a>
-                <a href="/6/categoryhome">Art & Collectibles</a>
-                <a href="/7/categoryhome">Others</a>
+                {categoryList.map((cat, key)=>
+                    <a key={key} href={`/${cat.id}/categoryhome`}>{cat.category_name}</a>
+                )}
             </menu>
 
             <div className="landing">
@@ -72,7 +80,8 @@ const Home = () => {
             </div>
             
             <div className="grid-container">
-                {items.map((item, key)=>
+                {items.length === 0 && <p>Loading...</p>}
+                {items.length > 0 && items.map((item, key)=>
                     <GridItem
                     key = {key}
                     sellerId = {item.user_id}

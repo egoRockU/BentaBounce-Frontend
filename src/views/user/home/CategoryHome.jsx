@@ -14,12 +14,14 @@ import { useParams } from "react-router-dom"
 const CategoryHome = () => {
 
     const [items, setItems] = useState([])
-    const [category, setCategory] = useState({'category_name': 'Loading'})
+    const [category, setCategory] = useState('Loading')
+    const [categoryList, setCategoryList] = useState([])
     const {categoryId} = useParams()
     
     useEffect(()=>{
         getItems()
-        getCategories()
+        getCategoriesList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const getItems = () =>{
@@ -36,17 +38,14 @@ const CategoryHome = () => {
         })
     }
 
-    const getCategories = ()=> {
-        const input = {
-            'category': 'getCategory',
-            'category_id': Number(categoryId)
-        }
-        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', input, {
-            headers : {
+    const getCategoriesList = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/getCategoryList.php', {
+            headers: {
                 "ngrok-skip-browser-warning": "8888"
             }
-        }).then((res)=>{
-            setCategory(res.data)
+        }).then((res) => {
+            setCategoryList(res.data)
+            setCategory(res.data[categoryId-1].category_name)
         })
     }
 
@@ -56,13 +55,9 @@ const CategoryHome = () => {
             <Navbar />
 
             <menu>
-                <a href="/1/categoryhome">Jewelry & Accessories</a>
-                <a href="/2/categoryhome">Clothing & Shoes</a>
-                <a href="/3/categoryhome">Home & Living</a>
-                <a href="/4/categoryhome">Wedding & Party</a>
-                <a href="/5/categoryhome">Toys & Entertainment</a>
-                <a href="/6/categoryhome">Art & Collectibles</a>
-                <a href="/7/categoryhome">Others</a>
+                {categoryList.map((cat, key)=>
+                    <a key={key} href={`/${cat.id}/categoryhome`}>{cat.category_name}</a>
+                )}
             </menu>
 
             <div className="landing">
@@ -79,7 +74,7 @@ const CategoryHome = () => {
         </section>
         <section className="section2">
             <h1 className="title">
-                {category.category_name}
+                {category}
             </h1>
             <div className="category">
                 <div className="products">
@@ -94,7 +89,8 @@ const CategoryHome = () => {
             </div>
             
             <div className="grid-container">
-                {items.map((item, key)=>
+                {items.length === 0 && <p>Loading...</p>}
+                {items.length > 0 && items.map((item, key)=>
                     <GridItem
                     key = {key}
                     sellerId = {item.user_id}

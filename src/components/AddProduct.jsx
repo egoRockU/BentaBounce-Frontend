@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
 
     const userId = localStorage.getItem("user_id")
+    const [categoryList, setCategoryList] = useState([])
     const [seller, setSeller] = useState([])
     const [image, setImage] = useState(null)
     const [imageFile, setImageFile] = useState(null)
@@ -21,6 +22,7 @@ const AddProduct = () => {
 
     useEffect(()=>{
         getSeller()
+        getCategories()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
@@ -59,6 +61,17 @@ const AddProduct = () => {
         
     }
 
+    const getCategories = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/getCategoryList.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setCategoryList(res.data)
+            console.log(res.data)
+        })
+    }
+
     const getSeller = () => {
         axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/profile.php', {'user_id': userId}, {
             headers : {
@@ -93,14 +106,10 @@ const AddProduct = () => {
                         </div>
                         <div className="category">
                             <p className="descTitle">Category</p>
-                            <select name="category" defaultValue="7" onChange={(e)=>setCategory(e.target.value)}>
-                                <option value="1">Jewerly & Accessories</option>
-                                <option value="2">Clothing & Shoes</option>
-                                <option value="3">Home & Living</option>
-                                <option value="4">Wedding & Party</option>
-                                <option value="5">Toys & Entertainment</option>
-                                <option value="6">Art & Collectibles</option>
-                                <option value="7">Others</option>
+                            <select name="category" onChange={(e)=>setCategory(e.target.value)}>
+                                {categoryList.map((cat, key)=>
+                                    <option value={cat.id} key={key}>{cat.category_name}</option>
+                                )}
                             </select>
                         </div>
                         <div className="quantity">
