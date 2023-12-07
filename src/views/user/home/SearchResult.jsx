@@ -8,6 +8,8 @@ import Footer from "../../../components/Footer"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 
 const SearchResult = () => {
@@ -15,6 +17,13 @@ const SearchResult = () => {
     const [items, setItems] = useState([])
     const [categoryList, setCategoryList] = useState([])
     const {searchitem} = useParams()
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const currentItems = items.slice(startIndex, endIndex);
     
     useEffect(()=>{
         getItems()
@@ -44,6 +53,10 @@ const SearchResult = () => {
             setCategoryList(res.data)
         })
     }
+
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+      };
 
     return (
         <>
@@ -85,7 +98,7 @@ const SearchResult = () => {
             
             <div className="grid-container">
                 {items.length === 0 && <p>Loading...</p>}
-                {items.length > 0 && items.map((item, key)=>
+                {items.length > 0 && currentItems.map((item, key)=>
                     <GridItem
                     key = {key}
                     sellerId = {item.user_id}
@@ -97,6 +110,12 @@ const SearchResult = () => {
                 />
                 )}
             </div>
+            <Stack justifyContent={"center"} spacing={2}>
+                <Pagination 
+                count={Math.ceil(items.length / itemsPerPage)}
+                page={currentPage}
+                onChange={handlePageChange} />
+            </Stack>
         </section>
 
         <Footer />
