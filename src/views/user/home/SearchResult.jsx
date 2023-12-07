@@ -7,22 +7,26 @@ import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useParams } from "react-router-dom"
 
 
-
-const Home = () => {
+const SearchResult = () => {
 
     const [items, setItems] = useState([])
     const [categoryList, setCategoryList] = useState([])
-    const [cheapToExp, setCheapToExp] = useState(true)
+    const {searchitem} = useParams()
     
     useEffect(()=>{
         getItems()
         getCategoriesList()
-    }, [])
+    }, [searchitem])
     
     const getItems = () =>{
-        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', {'category': 'all'}, {
+        const input = {
+            'category': 'search',
+            'searchItem': searchitem
+        }
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/getItems.php', input, {
             headers : {
                 "ngrok-skip-browser-warning": "8888"
             }
@@ -41,28 +45,9 @@ const Home = () => {
         })
     }
 
-    const changePriceSort = () => {
-        cheapToExp ? setCheapToExp(false) : setCheapToExp(true);
-        SortItems()
-    }
-
-    const SortItems = () => {
-        if (cheapToExp){
-            items.sort((a,b)=>{
-                return a.price - b.price;
-            })
-        } else {
-            items.sort((a,b)=>{
-                return b.price - a.price;
-            })
-        }
-
-    }
-
     return (
         <>
         <section className="section1">
-            {SortItems()}
             <Navbar />
             <menu>
                 {categoryList.map((cat, key)=>
@@ -84,7 +69,7 @@ const Home = () => {
         </section>
         <section className="section2">
             <h1 className="title">
-                Discover More
+                Results for &quot;{searchitem}&quot;
             </h1>
             <div className="category">
                 <div className="products">
@@ -94,7 +79,7 @@ const Home = () => {
                     <a href="#">Jacket</a>
                 </div>
                 <div>
-                    <button className="filter" onClick={changePriceSort} ><img src={filter}/>Price</button>
+                    <button className="filter" ><img src={filter}/>Filter</button>
                 </div>
             </div>
             
@@ -119,4 +104,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default SearchResult

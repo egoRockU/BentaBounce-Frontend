@@ -16,6 +16,7 @@ const CategoryHome = () => {
     const [items, setItems] = useState([])
     const [category, setCategory] = useState('Loading')
     const [categoryList, setCategoryList] = useState([])
+    const [cheapToExp, setCheapToExp] = useState(true)
     const {categoryId} = useParams()
     
     useEffect(()=>{
@@ -47,6 +48,24 @@ const CategoryHome = () => {
             setCategoryList(res.data)
             setCategory(res.data[categoryId-1].category_name)
         })
+    }
+
+    const changePriceSort = () => {
+        cheapToExp ? setCheapToExp(false) : setCheapToExp(true);
+        SortItems()
+    }
+
+    const SortItems = () => {
+        if (cheapToExp){
+            items.sort((a,b)=>{
+                return a.price - b.price;
+            })
+        } else {
+            items.sort((a,b)=>{
+                return b.price - a.price;
+            })
+        }
+
     }
 
     return (
@@ -84,7 +103,7 @@ const CategoryHome = () => {
                     <a href="#">Jacket</a>
                 </div>
                 <div>
-                    <button className="filter" ><img src={filter}/>Filter</button>
+                    <button className="filter" onClick={changePriceSort} ><img src={filter}/>Price</button>
                 </div>
             </div>
             

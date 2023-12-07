@@ -68,7 +68,6 @@ const AddProduct = () => {
             }
         }).then((res) => {
             setCategoryList(res.data)
-            console.log(res.data)
         })
     }
 

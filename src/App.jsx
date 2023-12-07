@@ -14,9 +14,9 @@ import EditGridItem from "./components/EditGridItem"
 import CategoryHome from "./views/user/home/CategoryHome"
 import { checkIsLoggedIn } from "./utils/checkIsLoggedIn"
 import PageNotFound from "./components/PageNotFound"
+import SearchResult from "./views/user/home/SearchResult"
 
 function App() {
-
 
   return (
     <BrowserRouter>
@@ -26,6 +26,7 @@ function App() {
           <>
             <Route path="/" element={<Home/>} />
             <Route path="/:categoryId/categoryhome" element={<CategoryHome/>} />
+            <Route path="/:searchitem/searchresults" element={<SearchResult/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/:sellerId/seller" element={<Seller />}/>
@@ -40,6 +41,7 @@ function App() {
           <>
             <Route path="/" element={<Home/>} />
             <Route path="/:categoryId/categoryhome" element={<CategoryHome/>} />
+            <Route path="/:searchitem/searchresults" element={<SearchResult/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/:sellerId/seller" element={<Seller />}/>
             <Route path="/:sellerId/:itemId/productView" element={<ProductView />} />

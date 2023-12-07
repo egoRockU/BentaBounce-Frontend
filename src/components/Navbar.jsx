@@ -9,6 +9,7 @@ import { checkIsLoggedIn } from "../utils/checkIsLoggedIn";
 const Navbar = () => {
 
     const [click, setClick] = useState(true)
+    const [searchItem, setSearchItem] = useState('')
     const navigate = useNavigate()
 
     const clickLogo = () => {
@@ -31,6 +32,10 @@ const Navbar = () => {
         navigate("/editsellerprofile")
     }
 
+    const search = (e) => {
+        e.preventDefault()
+        navigate(`/${searchItem}/searchresults`)
+    }
     
 
     return(
@@ -38,7 +43,10 @@ const Navbar = () => {
         
             <nav>
                 <button className="searchIcon" onClick={searchClick}><IoSearch size={20} />
-                </button><input id="searchBar" className={click ? "disabled" : ""} type="text" />
+                </button>
+                <form onSubmit={search}>
+                    <input id="searchBar" className={click ? "disabled" : ""} onChange={(e)=>setSearchItem(e.target.value)} type="text" /><input type="submit" hidden />
+                </form>
                 <h1 className="lgo" onClick={clickLogo}>BENTABOUNCE</h1>
                 <div className="account">
                     {checkIsLoggedIn() && <button className="account" onClick={clickAccount}><img src={account} />Account</button>}
