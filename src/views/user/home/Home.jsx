@@ -7,8 +7,8 @@ import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
 import { useEffect, useState } from "react"
 import axios from "axios"
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
 
 
 

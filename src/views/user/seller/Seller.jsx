@@ -6,6 +6,8 @@ import Footer from "../../../components/Footer"
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
+import Pagination from '@mui/material/Pagination'
+import Stack from '@mui/material/Stack'
 
 
 const Seller = () => {
@@ -16,6 +18,13 @@ const Seller = () => {
     const [email, setEmail] = useState('')
     const [photo, setPhoto] = useState()
     const [bio, setBio] = useState('')
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const currentItems = items.slice(startIndex, endIndex);
 
     useEffect(()=>{
         getUser()
@@ -50,6 +59,10 @@ const Seller = () => {
         })
     }
 
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+      };
+
     return (
         <>
             <Navbar />
@@ -81,7 +94,7 @@ const Seller = () => {
             </div>
             
             <div className="grid-container">
-                {items.map((item, key)=>
+                {currentItems.map((item, key)=>
                     <GridItem
                     key = {key}
                     sellerId = {sellerId}
@@ -94,7 +107,12 @@ const Seller = () => {
                 )}
             </div>
         </section>
-
+        <Stack justifyContent={"center"} spacing={2}>
+                <Pagination 
+                count={Math.ceil(items.length / itemsPerPage)}
+                page={currentPage}
+                onChange={handlePageChange} />
+            </Stack>
         <Footer />
         </>
     )

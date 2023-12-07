@@ -6,6 +6,8 @@ import EditGridItem from "./EditGridItem"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
 const EditSellerProfile = () => {
 
@@ -16,6 +18,13 @@ const EditSellerProfile = () => {
     const [photo, setPhoto] = useState()
     const [bio, setBio] = useState('')
     const navigate = useNavigate()
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const currentItems = userItems.slice(startIndex, endIndex);
 
     useEffect(()=>{
         getUser()
@@ -86,6 +95,10 @@ const EditSellerProfile = () => {
         navigate('/addproduct')
     }
 
+    const handlePageChange = (event, value) => {
+        setCurrentPage(value);
+      };
+
     return ( 
         <>
         <AccountNav />
@@ -128,7 +141,7 @@ const EditSellerProfile = () => {
             </div>
             
             <div className="grid-container">
-            {userItems.map((item, key)=>
+            {currentItems.map((item, key)=>
                     <EditGridItem
                     key = {key}
                     id = {item.id}
@@ -140,7 +153,12 @@ const EditSellerProfile = () => {
                 )}
             </div>
         </section>
-
+        <Stack justifyContent={"center"} spacing={2}>
+                <Pagination 
+                count={Math.ceil(userItems.length / itemsPerPage)}
+                page={currentPage}
+                onChange={handlePageChange} />
+            </Stack>
         <Footer />
         </>
      );
