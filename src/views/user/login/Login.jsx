@@ -86,34 +86,37 @@ const Login = () => {
                 <h1>Log In</h1>
             </nav>
 
-            <div className="container">
-                <div className="modal">
-                    <h1>Login</h1>
-                    <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username / Email Address" type="text" />
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
-                    <button className="login" onClick={login}>Log in</button>
-                    <p className="forgot">Forgot Password</p>
-                    <div className="design">
-                        <div className="line"></div>
-                        <p>OR</p>
-                        <div className="line"></div>
-                    </div>
-                    {/* google button here */}
-                    <GoogleOAuthProvider clientId="902561606959-pe62hc31n1qamkoetnrptkv0jmhi0p2q.apps.googleusercontent.com">
-                        <div className="google">
-                        <GoogleLogin
-                            onSuccess={handleGoogleLogin}
-                            type="buttton"
-                            size="medium"
-                            text="continue_with"
-                        />
+            <div className="logincontainer">
+                <div className="container">
+                    <div className="modal">
+                        <h1>Login</h1>
+                        <input value={user} onChange={(e) => setUser(e.target.value)} placeholder="Username / Email Address" type="text" />
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+                        <button className="login" onClick={login}>Log in</button>
+                        <p className="forgot">Forgot Password</p>
+                        <div className="design">
+                            <div className="line"></div>
+                            <p>OR</p>
+                            <div className="line"></div>
                         </div>
-                    </GoogleOAuthProvider>
-                    <div className="footer">
-                        <p>New to BentaBounce?</p>
-                        <a href="" onClick={clickSignUp}>Sign Up</a>
+                        {/* google button here */}
+                        <GoogleOAuthProvider clientId="902561606959-pe62hc31n1qamkoetnrptkv0jmhi0p2q.apps.googleusercontent.com">
+                            <div className="google">
+                            <GoogleLogin
+                                onSuccess={handleGoogleLogin}
+                                type="buttton"
+                                size="medium"
+                                text="continue_with"
+                            />
+                            </div>
+                        </GoogleOAuthProvider>
+                        <div className="footer">
+                            <p>New to BentaBounce?</p>
+                            <a href="" onClick={clickSignUp}>Sign Up</a>
+                        </div>
                     </div>
                 </div>
+            
                 
             </div>
         </>

@@ -1,6 +1,16 @@
-import arrowtop from "../img/arrowtop.png"
+import { FaArrowUp } from "react-icons/fa";
 
 const Footer = () => {
+
+    const anchors = document.querySelectorAll('a[href*="#"]');
+
+    for (const anchor of anchors) {
+    anchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+    }
 
     return(
         <>
@@ -10,18 +20,17 @@ const Footer = () => {
                     <div className="logoname">
                         <h1>BENTABOUNCE</h1>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua
+                    <p>BentaBounce, A playful combination of "Benta" (sale) and "Bounce" (leave), 
+                    embodies its core values of promoting a bustling and dynamic online marketplace.
                     </p>
                 </div>
                 <div className="grid-items grid-item-2">
                     <h3>CATALOG</h3>
-                    <a href="#">Necklaces</a>
-                    <a href="#">Hoodies</a>
-                    <a href="#">Jewelry Box</a>
-                    <a href="#">T-shirt</a>
-                    <a href="#">Jacket</a>
+                    <a href="#">Jewelry & Accessories</a>
+                    <a href="#">Clothing & Shoes</a>
+                    <a href="#">Home & Living</a>
+                    <a href="#">Toys & Entertainment</a>
+                    <a href="#">Others</a>
                 </div>
                 <div className="grid-items grid-item-3">
                     <h3>ABOUT US</h3>
@@ -49,7 +58,7 @@ const Footer = () => {
 
         <footer>
             <p>© 2023 BentaBounce , Inc.</p>
-            <p>Scroll to top <img src={arrowtop}/></p>
+            <a href="#top">Scroll to top <FaArrowUp /></a>
         </footer>
         </>
     )

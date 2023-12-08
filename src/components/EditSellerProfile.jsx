@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+
 const EditSellerProfile = () => {
 
     const userId = localStorage.getItem("user_id")
@@ -91,13 +92,21 @@ const EditSellerProfile = () => {
         })
     }
 
+
     const handleAddProduct = () => {
         navigate('/addproduct')
     }
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
-      };
+    };
+
+    const textarea = document.querySelector("textarea");
+    textarea.addEventListener("keyup", e => {
+        textarea.style.height = "auto";
+        let scHeight = e.target.scrollHeight;
+        textarea.style.height = `${scHeight}px`;
+    });
 
     return ( 
         <>
@@ -115,15 +124,17 @@ const EditSellerProfile = () => {
                     <div className="descriptions">
                         <h1 className="userName">{username}</h1>
                         <div className="profiles">
-                            <p className="profileText">Profile</p>
-                            <form onSubmit={handleOnSubmitBio}>
-                                <input name="bio" className="profileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
-                                <input type="submit"  hidden/>
-                            </form>
-                        </div>
-                        <div className="profiles">
-                            <p className="profileText">Email</p>
-                            <p className="profileDesc">{email}</p>
+                            <div className="profileinput">
+                                <label for="inputprofileDesc">Profile</label>
+                                <form onSubmit={handleOnSubmitBio}>    
+                                    <textarea name="bio" className="inputprofileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></textarea>
+                                    <input type="submit"  hidden/>
+                                </form>
+                            </div>
+                            <div className="profileemail">
+                                <label for="email">Email</label>
+                                <p className="emailDesc">{email}</p>                      
+                            </div>
                         </div>
                     </div>
                 </div>

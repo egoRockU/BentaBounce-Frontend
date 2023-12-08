@@ -35,7 +35,6 @@ nav .logo {
     flex-direction: column;
     width: 80%;
     height: 80%;
-    
 }
 
 .container .modal h1 {
@@ -47,7 +46,7 @@ nav .logo {
 }
 
 .container .modal input {
-    width: 25em;
+    width: 24em;
     height: 3.5em;
     margin: 23px auto 0 auto;
     border-radius: 3px;
@@ -62,7 +61,7 @@ nav .logo {
 .modal .login {
     background: var(--black);
     cursor: pointer;
-    width: 25em;
+    width: 24em;
     height: 3.5em;
     margin: 33px auto 0 auto;
     color: var(--white);
@@ -73,6 +72,8 @@ nav .logo {
 }
 
 .modal .forgot {
+    display: flex;
+    justify-content: end;
     text-align: end;
     transform: translate(-12px, 6px);
     cursor: pointer;
