@@ -134,7 +134,7 @@ const EditProduct = () => {
                 <div className="description">
                     <form onSubmit={handleSubmit}>
                         <h1 className="name">{item.name}</h1>
-                        <input className="name" type="text" name="productName" value={name} placeholder="Product Name" onChange={(e)=>setName(e.target.value)} required></input>
+                        <input className="name" type="text" id="productName" value={name} placeholder="Edit Product Name" onChange={(e)=>setName(e.target.value)} required></input>
                         <p className="price">PHP </p><input className="price" type="number" step="0.05" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} required></input>
                         <div className="desc">
                             <p className="descTitle">Description</p>

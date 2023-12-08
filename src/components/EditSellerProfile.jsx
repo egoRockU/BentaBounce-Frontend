@@ -101,13 +101,6 @@ const EditSellerProfile = () => {
         setCurrentPage(value);
     };
 
-    const textarea = document.querySelector("textarea");
-    textarea.addEventListener("keyup", e => {
-        textarea.style.height = "auto";
-        let scHeight = e.target.scrollHeight;
-        textarea.style.height = `${scHeight}px`;
-    });
-
     return ( 
         <>
         <AccountNav />
@@ -127,7 +120,7 @@ const EditSellerProfile = () => {
                             <div className="profileinput">
                                 <label for="inputprofileDesc">Profile</label>
                                 <form onSubmit={handleOnSubmitBio}>    
-                                    <textarea name="bio" className="inputprofileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></textarea>
+                                    <input name="bio" className="inputprofileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
                                     <input type="submit"  hidden/>
                                 </form>
                             </div>
@@ -141,28 +134,28 @@ const EditSellerProfile = () => {
             </div>
 
             <section className="section2">
-            <h1 className="title">
-                Here&apos;s What I Sell
-            </h1>
-            <div className="editsellercategory">
-                <div className="editsellerproducts">
-                    <a href="#">All Products</a>
-                    <button onClick={handleAddProduct}>Add My Product</button>
+                <h1 className="title">
+                    Here&apos;s What I Sell
+                </h1>
+                <div className="editsellercategory">
+                    <div className="editsellerproducts">
+                        <a href="#">All Products</a>
+                        <button onClick={handleAddProduct}>Add My Product</button>
+                    </div>
                 </div>
-            </div>
-            
-            <div className="grid-container">
-            {currentItems.map((item, key)=>
-                    <EditGridItem
-                    key = {key}
-                    id = {item.id}
-                    picture={item.image}
-                    desc= {item.details}
-                    name= {item.name}
-                    price= {item.price}
-                />
-                )}
-            </div>
+                
+                <div className="grid-container">
+                {currentItems.map((item, key)=>
+                        <EditGridItem
+                        key = {key}
+                        id = {item.id}
+                        picture={item.image}
+                        desc= {item.details}
+                        name= {item.name}
+                        price= {item.price}
+                    />
+                    )}
+                </div>
         </section>
         <Stack justifyContent={"center"} spacing={2}>
                 <Pagination 

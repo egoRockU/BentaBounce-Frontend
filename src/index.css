@@ -17,6 +17,8 @@
     width: 70%;
     margin: 2rem auto;
     text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 
 .picture {
@@ -92,11 +94,10 @@
     font-family: 'Open-Sans', sans-serif;
     font-size: large;
     width: 40rem;
-    height: 100%;
-    resize: none;
+    resize: vertical;
     overflow: hidden;
-
 }
+
 
 ::placeholder{
     font-family: 'Open Sans', sans-serif;
@@ -132,6 +133,9 @@
 .editsellerproducts a {
     text-decoration: none;
     color: black;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    padding-left: 35px;
 }
 
 .editsellerproducts button {
@@ -139,4 +143,7 @@
     background: #1E2832;
     color: white;
     border: none;
+    border-radius: 5px;
 }
+
+

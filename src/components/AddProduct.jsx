@@ -97,7 +97,7 @@ const AddProduct = () => {
                 <div className="description">
                     <form onSubmit={handleSubmit}>
                         <h1 className="name">Product Name</h1>
-                        <input className="name" type="text" name="productName" placeholder="Product Name" onChange={(e)=>setName(e.target.value)} required></input>
+                        <input className="name" type="text" name="productName" placeholder="Enter Product Name" onChange={(e)=>setName(e.target.value)} required></input>
                         <p className="price">PHP</p><input className="price" type="number" step="0.05" name="price" onChange={(e)=>setPrice(e.target.value)} required></input>
                         <div className="desc">
                             <p className="descTitle">Description</p>
