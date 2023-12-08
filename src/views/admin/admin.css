@@ -1,0 +1,44 @@
+.log-in-nav {
+    display: flex;
+    justify-content: center;
+    padding: 30px
+}
+
+.log-in-box{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    padding: 30px
+}
+
+.surface {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-container {
+    border: 1px solid;
+    height: 500px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-container {
+    border: 1px solid;
+    width: 20%;
+    margin: 30px;
+
+}
+
+.category-contents-container {
+    border: 1px solid;
+    margin: 30px;
+    width: 80%;
+}
+
+.cat-form{
+    padding: 10px;
+}

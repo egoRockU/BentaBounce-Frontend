@@ -15,6 +15,8 @@ import CategoryHome from "./views/user/home/CategoryHome"
 import { checkIsLoggedIn } from "./utils/checkIsLoggedIn"
 import PageNotFound from "./components/PageNotFound"
 import SearchResult from "./views/user/home/SearchResult"
+import AdminLogIn from "./views/admin/AdminLogIn"
+import AdminHome from "./views/admin/AdminHome"
 
 function App() {
 
@@ -56,6 +58,12 @@ function App() {
             <Route path="*" element={<PageNotFound/>}/>
           </>
         }
+
+        <Route exact path="/adminlogin" element={<AdminLogIn />} />
+        {sessionStorage.getItem("adminId") == 1 &&
+          <Route path="/adminhome" element={<AdminHome />} />
+        }
+
         </Routes>
     </BrowserRouter>
   )
