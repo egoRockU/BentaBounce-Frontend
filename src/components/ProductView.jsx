@@ -67,10 +67,14 @@ const ProductView = ({item}) => {
                         </div>
                         <div className="stocks">
                             <p className="stocksdesc">Stocks Available</p>
-                            <p>{item.stocks}</p>
+                            {item.stocks == 0 && <p>Out of stock</p>}
+                            {item.stocks > 0 && <p>{item.stocks}</p>}
+
                         </div>
                     </div>
-                    <button className="addToCart" onClick={addToCart}><IoBagAdd />Add To Shopping List</button>
+                    {item.stocks == 0 && <button className="addToCart" onClick={addToCart} disabled><IoBagAdd />Out of stock</button>}
+                    {item.stocks > 0 && <button className="addToCart" onClick={addToCart}><IoBagAdd />Add To Shopping List</button>}
+                    
                 </div>
             </div>
         
