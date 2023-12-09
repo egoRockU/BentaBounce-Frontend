@@ -1,7 +1,7 @@
 import "./home.css"
 import girlBackground from "../../../img/19.png"
-import Basket from "../../../img/basket.png"
-import filter from "../../../img/filter.png"
+import { FaBagShopping } from "react-icons/fa6";
+import { FaFilter } from "react-icons/fa";
 import GridItem from "../../../components/GridItem"
 import Navbar from "../../../components/Navbar"
 import Footer from "../../../components/Footer"
@@ -9,8 +9,6 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Pagination from '@mui/material/Pagination'
 import Stack from '@mui/material/Stack'
-
-
 
 const Home = () => {
 
@@ -24,6 +22,17 @@ const Home = () => {
     const endIndex = startIndex + itemsPerPage;
 
     const currentItems = items.slice(startIndex, endIndex);
+
+    const anchors = document.querySelectorAll('a[href*="#"]');
+
+    for (const anchor of anchors) {
+    anchor.addEventListener('click', (event) => {
+        event.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+    }
+
 
     useEffect(()=>{
         getItems()
@@ -88,7 +97,9 @@ const Home = () => {
                     <h1>Lorem Ipsum</h1>
                     <h3>you can explore ans shop many differnt collection
                     from various barands here.</h3>
-                    <button><img src={Basket}  />Shop Now</button>
+                    <div className="shopnowbtn">
+                        <a className="btn" href="#discover"> <FaBagShopping size={30} className="shopnowicon"/>Shop Now</a>
+                    </div> 
                 </div>
                 <div className="right-side">
                     <img src={girlBackground}/>
@@ -96,18 +107,15 @@ const Home = () => {
             </div>
         </section>
         <section className="section2">
-            <h1 className="title">
+            <h1 id="discover" className="title">
                 Discover More
             </h1>
             <div className="category">
                 <div className="products">
-                    <a href="#">All Products</a>
-                    <a href="#">T-shirt</a>
-                    <a href="#">Hoodies</a>
-                    <a href="#">Jacket</a>
+                    
                 </div>
-                <div>
-                    <button className="filter" onClick={changePriceSort} ><img src={filter}/>Price</button>
+                <div className="filter">
+                    <button className="filterbtn" onClick={changePriceSort}><FaFilter size={20} className="filtericon"/>Price</button>
                 </div>
             </div>
             
@@ -125,13 +133,18 @@ const Home = () => {
                 />
                 )}
             </div>
-            <Stack justifyContent={"center"} spacing={2}>
-                <Pagination 
-                count={Math.ceil(items.length / itemsPerPage)}
-                page={currentPage}
-                onChange={handlePageChange} />
-            </Stack>
+            
+            <div className="pagination">
+                <Stack>
+                    <Pagination 
+                    count={Math.ceil(items.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={handlePageChange} />
+                </Stack>  
+            </div>
+
         </section>
+    
         <Footer />
         </>
     )

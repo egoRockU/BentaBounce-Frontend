@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
+
 const EditSellerProfile = () => {
 
     const userId = localStorage.getItem("user_id")
@@ -91,13 +92,14 @@ const EditSellerProfile = () => {
         })
     }
 
+
     const handleAddProduct = () => {
         navigate('/addproduct')
     }
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
-      };
+    };
 
     return ( 
         <>
@@ -115,43 +117,45 @@ const EditSellerProfile = () => {
                     <div className="descriptions">
                         <h1 className="userName">{username}</h1>
                         <div className="profiles">
-                            <p className="profileText">Profile</p>
-                            <form onSubmit={handleOnSubmitBio}>
-                                <input name="bio" className="profileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
-                                <input type="submit"  hidden/>
-                            </form>
-                        </div>
-                        <div className="profiles">
-                            <p className="profileText">Email</p>
-                            <p className="profileDesc">{email}</p>
+                            <div className="profileinput">
+                                <label for="inputprofileDesc">Profile</label>
+                                <form onSubmit={handleOnSubmitBio}>    
+                                    <input name="bio" className="inputprofileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
+                                    <input type="submit"  hidden/>
+                                </form>
+                            </div>
+                            <div className="profileemail">
+                                <label for="email">Email</label>
+                                <p className="emailDesc">{email}</p>                      
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <section className="section2">
-            <h1 className="title">
-                Here&apos;s What I Sell
-            </h1>
-            <div className="editsellercategory">
-                <div className="editsellerproducts">
-                    <a href="#">All Products</a>
-                    <button onClick={handleAddProduct}>Add My Product</button>
+                <h1 className="title">
+                    Here&apos;s What I Sell
+                </h1>
+                <div className="editsellercategory">
+                    <div className="editsellerproducts">
+                        <a href="#">All Products</a>
+                        <button onClick={handleAddProduct}>Add My Product</button>
+                    </div>
                 </div>
-            </div>
-            
-            <div className="grid-container">
-            {currentItems.map((item, key)=>
-                    <EditGridItem
-                    key = {key}
-                    id = {item.id}
-                    picture={item.image}
-                    desc= {item.details}
-                    name= {item.name}
-                    price= {item.price}
-                />
-                )}
-            </div>
+                
+                <div className="grid-container">
+                {currentItems.map((item, key)=>
+                        <EditGridItem
+                        key = {key}
+                        id = {item.id}
+                        picture={item.image}
+                        desc= {item.details}
+                        name= {item.name}
+                        price= {item.price}
+                    />
+                    )}
+                </div>
         </section>
         <Stack justifyContent={"center"} spacing={2}>
                 <Pagination 

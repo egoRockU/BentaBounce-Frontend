@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&family=Inter:wght@400;700;800&family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&family=Inter:wght@400;700;800&family=Open+Sans&family=Roboto:wght@300&display=swap');
 
+
 * {
     padding: 0;
     margin: 0;
@@ -16,6 +17,8 @@
     width: 70%;
     margin: 2rem auto;
     text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 
 .picture {
@@ -32,9 +35,18 @@
     transform: scale(1.1);
 }
 
+.sellerContainer .sellerProfile .descriptions .profiles {
+    display: flex;
+    justify-content: space-between;
+}
 
 .sellerContainer .sellerProfile .profiless {
     position: relative;
+}
+
+.sellerContainer .sellerProfile .descriptions h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 .sellerContainer .sellerProfile .profiless .sellerediticon {
@@ -50,6 +62,69 @@
     transform: scale(1.1);
 }
 
+.descriptions .profiles {
+    display: flex;
+    flex-direction: column
+}
+
+.descriptions .profiles .profileinput {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.descriptions .profiles .profileinput label {
+    margin-right: 35px;
+    font-size: large;
+    font-family: 'Open-Sans', sans-serif;
+    color: #00000066;
+    padding-top: 20px; 
+    padding-left: 5px;
+    text-align: center;
+}
+
+.descriptions .profiles .profileinput .inputprofileDesc{
+    border: none;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: large;
+    width: 40rem;
+    resize: vertical;
+    overflow: hidden;
+}
+
+
+::placeholder{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.descriptions .profiles .profileemail {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.descriptions .profiles .profileemail label {
+    margin-right: 46px;
+    font-size: large;
+    font-family: 'Open-Sans', sans-serif;
+    color: #00000066;
+    text-align: center;
+    padding: 5px;
+}
+
+.descriptions .profiles .profileemail .emailDesc{
+    padding: 5px;
+    font-family: 'Open-Sans', sans-serif;
+    font-size: large
+}
+
 .editsellerproducts {
     display: flex;
     justify-content: space-between;
@@ -58,6 +133,9 @@
 .editsellerproducts a {
     text-decoration: none;
     color: black;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    padding-left: 35px;
 }
 
 .editsellerproducts button {
@@ -65,5 +143,7 @@
     background: #1E2832;
     color: white;
     border: none;
+    border-radius: 5px;
 }
+
 
