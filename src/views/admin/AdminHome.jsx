@@ -4,27 +4,29 @@ import { useEffect, useState } from "react"
 const AdminHome = () => {
 
     const [categoryList, setCategoryList] = useState([])
-    const [catName1, setCatname] = useState('')
+
+    const [catNames, setCatNames] = useState([])
 
     useEffect(()=>{
         getCategoriesList()
     }, [])
 
     const getCategoriesList = () => {
-        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/getCategoryList.php', {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/adminGetCategories.php', {
             headers: {
                 "ngrok-skip-browser-warning": "8888"
             }
         }).then((res) => {
-            setCategoryList(res.data)
+            setCategoryList(res.data['category_array'])
+            setCatNames(res.data['category_names'])
         })
     }
 
-    const updateCategory = (catId) => (e) => {
+    const updateCategory = (catId, catName) => (e) => {
         e.preventDefault()
         const formData = new FormData()
         formData.append("catId", catId)
-        formData.append("categoryName", catName1)
+        formData.append("categoryName", catName)
 
         axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/adminUpdateCategory.php', formData, {
             headers: {
@@ -35,6 +37,14 @@ const AdminHome = () => {
             alert(`Category ${catId} has been updated`)
             getCategoriesList()
         })
+    }
+
+
+    const updateCategoryNames = (id) => (e) => {
+        let newCategories = [...catNames]
+        newCategories[id] = e.target.value
+
+        setCatNames(newCategories);
     }
 
     return (
@@ -49,8 +59,8 @@ const AdminHome = () => {
                 <div className="category-contents-container">
                     <h1>Category Contents</h1>
                     {categoryList.map((cat, key)=>
-                        <form key={key} className="cat-form" onSubmit={updateCategory(cat.id)}>
-                            {cat.id} <input type="text" value={cat.category_name} onChange={(e)=>setCatname(e.target.value)}/>
+                        <form key={key} className="cat-form" onSubmit={updateCategory(cat.id, catNames[cat.id-1])}>
+                            {cat.id} <input type="text" placeholder="Edit Name" value={catNames[cat.id-1]} onChange={updateCategoryNames(cat.id-1)}/>
                             <input type="submit" value="Save changes" />
                         </form>
                     )}

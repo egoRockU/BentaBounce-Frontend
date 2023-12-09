@@ -1,11 +1,13 @@
 import { useState } from "react"
 import axios from "axios"
 import "./admin.css"
+import { useNavigate } from "react-router"
 
 const AdminLogIn = () => {
 
     const [adminName, setAdminName] = useState('')
     const [adminPass, setAdminPass] = useState('')
+    const navigate = useNavigate();
 
     const login = (e) => {
         e.preventDefault()
@@ -22,6 +24,7 @@ const AdminLogIn = () => {
         }).then((res)=>{
             switch (res.data["status"]){
                 case "success":
+                    navigate("/adminhome")
                     console.log(res.data["data"])
                     break
                 case "failed":
