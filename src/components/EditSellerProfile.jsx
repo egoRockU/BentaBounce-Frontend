@@ -118,14 +118,14 @@ const EditSellerProfile = () => {
                         <h1 className="userName">{username}</h1>
                         <div className="profiles">
                             <div className="profileinput">
-                                <label for="inputprofileDesc">Profile</label>
+                                <label htmlFor="inputprofileDesc">Profile</label>
                                 <form onSubmit={handleOnSubmitBio}>    
                                     <input name="bio" className="inputprofileDesc" placeholder='Say some welcoming words to your customers...' value={bio} onChange={(e)=>setBio(e.target.value)}></input>
                                     <input type="submit"  hidden/>
                                 </form>
                             </div>
                             <div className="profileemail">
-                                <label for="email">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <p className="emailDesc">{email}</p>                      
                             </div>
                         </div>
