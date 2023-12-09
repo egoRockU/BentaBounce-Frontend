@@ -3,13 +3,26 @@ import { useEffect, useState } from "react"
 
 const AdminHome = () => {
 
+    const [adminProfile, setAdminProfile] = useState([])
     const [categoryList, setCategoryList] = useState([])
 
     const [catNames, setCatNames] = useState([])
 
     useEffect(()=>{
+        getAdminProfile()
         getCategoriesList()
     }, [])
+
+
+    const getAdminProfile = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/admin/getAdminProfile.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res)=>{
+            setAdminProfile(res.data)
+        })
+    }
 
     const getCategoriesList = () => {
         axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/categories/adminGetCategories.php', {
@@ -55,6 +68,9 @@ const AdminHome = () => {
             <div className="admin-container">
                 <div className="profile-container">
                     <h1>Admin Profile</h1>
+                    <p>Username: {adminProfile.username}</p>
+                    <p>Email: {adminProfile.email}</p>
+                    <p>Income: ₱ {adminProfile.income}</p>
                 </div>
                 <div className="category-contents-container">
                     <h1>Category Contents</h1>
