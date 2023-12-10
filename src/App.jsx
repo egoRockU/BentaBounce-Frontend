@@ -17,8 +17,13 @@ import PageNotFound from "./components/PageNotFound"
 import SearchResult from "./views/user/home/SearchResult"
 import AdminLogIn from "./views/admin/AdminLogIn"
 import AdminHome from "./views/admin/AdminHome"
+import { useEffect } from "react"
 
 function App() {
+
+  useEffect(()=>{
+    checkIsLoggedIn()
+  })
 
   return (
     <BrowserRouter>
@@ -60,9 +65,8 @@ function App() {
         }
 
         <Route exact path="/adminlogin" element={<AdminLogIn />} />
-        {sessionStorage.getItem("adminId") == 1 &&
-          <Route path="/adminhome" element={<AdminHome />} />
-        }
+        <Route path="/adminhome" element={<AdminHome />} />
+
 
         </Routes>
     </BrowserRouter>

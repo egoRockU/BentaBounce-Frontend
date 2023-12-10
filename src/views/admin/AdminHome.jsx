@@ -1,18 +1,25 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const AdminHome = () => {
 
+    const navigate = useNavigate()
     const [adminProfile, setAdminProfile] = useState([])
     const [categoryList, setCategoryList] = useState([])
-
     const [catNames, setCatNames] = useState([])
+    const [products, setProducts] = useState([])
 
     useEffect(()=>{
         getAdminProfile()
         getCategoriesList()
+        getProducts()
     }, [])
 
+
+    if (!sessionStorage.getItem("adminId")){
+        navigate('/adminlogin')
+    }
 
     const getAdminProfile = () => {
         axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/admin/getAdminProfile.php', {
@@ -60,6 +67,20 @@ const AdminHome = () => {
         setCatNames(newCategories);
     }
 
+    const getProducts = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/adminGetItems.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setProducts(res.data)
+        })
+    }
+
+    const editProduct = (productId) => {
+        console.log(productId)
+    }
+
     return (
         <>
             <div className="log-in-nav">
@@ -83,11 +104,29 @@ const AdminHome = () => {
                 </div>
             </div>
             <div className="admin-container">
-                <div className="profile-container">
-                    <h1>Admin Profile</h1>
+                <div className="user-profiles-container">
+                    <h1>User Profiles</h1>
                 </div>
-                <div className="category-contents-container">
-                    
+                <div className="product-contents-container">
+                    <h1>Product Contents</h1>
+                    <ul className="product-list">
+                    {products.map((product, key)=>
+                        <li className="product-list-item" onClick={()=>{editProduct(product.id)}} key={key}>                 
+                            <div className="prod-li-key">
+                                <p>{key+1}</p>
+                            </div>
+                            <div className="prod-li-name">
+                                <p>{product.name}</p>
+                            </div>
+                            <div className="prod-li-price">
+                                <p>₱ {product.price}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{product.username}</p>
+                            </div>
+                        </li>
+                    )}
+                    </ul>
                 </div>
             </div>
         </>

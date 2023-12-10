@@ -1,11 +1,13 @@
 import { useState } from "react"
 import axios from "axios"
 import "./admin.css"
+import { useNavigate } from "react-router-dom"
 
 const AdminLogIn = () => {
 
     const [adminName, setAdminName] = useState('')
     const [adminPass, setAdminPass] = useState('')
+    const navigate = useNavigate();
 
     const login = (e) => {
         e.preventDefault()
@@ -23,6 +25,7 @@ const AdminLogIn = () => {
                     console.log(res.data["data"][0].id)
                     sessionStorage.setItem("adminId", res.data["data"][0].id)
                     sessionStorage.setItem("adminName", res.data["data"][0].username)
+                    navigate('/adminhome')
                     break
                 case "failed":
                     alert (res.data["message"])
