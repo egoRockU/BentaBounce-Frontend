@@ -109,7 +109,7 @@ const Seller = () => {
         </section>
         <Stack className="pagination">
                 <Pagination 
-                count={Math.ceil(userItems.length / itemsPerPage)}
+                count={Math.ceil(items.length / itemsPerPage)}
                 page={currentPage}
                 onChange={handlePageChange} />
             </Stack>
