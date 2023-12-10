@@ -17,7 +17,7 @@ const Home = () => {
     const [cheapToExp, setCheapToExp] = useState(true)
     
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+    const itemsPerPage = 12;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
