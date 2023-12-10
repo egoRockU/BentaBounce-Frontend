@@ -133,31 +133,42 @@ const EditProduct = () => {
                 </div>
                 <div className="description">
                     <form onSubmit={handleSubmit}>
-                        <h1 className="name">{item.name}</h1>
-                        <input className="name" type="text" id="productName" value={name} placeholder="Edit Product Name" onChange={(e)=>setName(e.target.value)} required></input>
-                        <p className="price">PHP </p><input className="price" type="number" step="0.05" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} required></input>
+                        <h1 className="productname">{item.name}</h1>
+                        <input className="inputname" type="text" id="productName" value={name} placeholder="Edit Product Name" onChange={(e)=>setName(e.target.value)} required></input>
+
+                        <div className="pricecontainer">
+                            <p className="pricelabel">₱ </p>
+                            <input className="price" type="number" step="0.05" name="price" value={price} onChange={(e)=>setPrice(e.target.value)} required></input>
+                        </div>
+                        
                         <div className="desc">
                             <p className="descTitle">Description</p>
-                            <input className="descText" type="text" name="description" value={description} onChange={(e)=>setDescription(e.target.value)} required></input>
+                            <input className="descText" type="text" name="description" value={description} placeholder="Edit Product Description" onChange={(e)=>setDescription(e.target.value)} required></input>
                         </div>
+
                         <div className="category">
                             <p className="descTitle">Category</p>
-                            <select name="category" value={category} onChange={(e)=>setCategory(e.target.value)}>
+                            <select className="ddcategory" name="category" value={category} onChange={(e)=>setCategory(e.target.value)}>
                                 {categoryList.map((cat, key)=>
                                     <option value={cat.id} key={key}>{cat.category_name}</option>
                                 )}
                                 </select>
                         </div>
-                        <div className="quantity">
-                            <div className="stocks">
-                                <p className="stocksdesc">Stocks</p>
-                                <input type="number" step="1" name="stocks" value={stocks} onChange={(e)=>setStocks(e.target.value)} required></input>
-                            </div>
+
+                        <div className="editquantity">
+                            <p className="stocksdesc">Stocks</p>
+                            <input className="stockinput" type="number" step="1" name="stocks" value={stocks} onChange={(e)=>setStocks(e.target.value)} required></input>
                         </div>
-                    <button className="addToCart" type="submit">Save The Changes</button>
+                        
+                        <div className="savedeleteButton">
+                            <button className="saveChanges" type="submit">Save The Changes</button>
+                            <button className="deleteItem" type="submit">Delete Item</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
+            
             <StoreView seller={seller} />
         </>
     );

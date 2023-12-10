@@ -21,8 +21,22 @@
     font-weight: 500;
 }
 
-.picture {
+.containerr .picture {
+    width: 26.375rem;
+    height: 26.375rem;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    border-radius: 3px;
+}
+
+.containerr .picture img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 50px;
 }
 
 .picture .editicon {
@@ -146,4 +160,146 @@
     border-radius: 5px;
 }
 
+.containerr .description h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+}
 
+.containerr .description .inputname  {
+    font-family: "Roboto", sans-serif;
+    border: none;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.description .pricecontainer {
+    display: flex;
+    align-items: center;
+    background-color: #F4F4F5;
+    width: 47.3125rem;
+    height: 5.25rem;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.description .pricelabel {
+    font-size: 1.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.description .price {
+    font-size: 1.875rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    padding: 10px;
+    width: 20rem;
+    border-radius: 3px;
+    border: none;
+}
+
+.description .desc {
+    margin-top: 25px;
+    align-items: center;
+}
+
+.description .desc .descTitle {
+    color: rgba(0, 0, 0, 0.40);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+    margin-right: 20px;
+}
+
+.description .desc .descText {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400; 
+    width: 20rem;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    font-size: medium;
+}
+
+.description .category {
+    margin-top: 28px;
+    align-items: center;
+}
+
+.description .category .descTitle{
+    color: rgba(0, 0, 0, 0.40);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+    margin-right: 20px;
+}
+
+.description .category .ddcategory {
+    width: 20rem;
+    border-radius: 3px;
+    font-size: medium;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400; 
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.description .editquantity {
+    display: flex;
+    align-items: center;
+    margin-top: 28px;
+}
+
+.description .editquantity .stocksdesc{
+    color: rgba(0, 0, 0, 0.40);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+    width: 7.3rem;
+}
+
+.description .editquantity .stockinput {
+    width: 20rem;
+    border-radius: 3px;
+    font-size: medium;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400; 
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.savedeleteButton {
+    display: flex;
+    align-items: start;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.saveChanges {
+    display: inline-flex;
+    width: 12rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    background: var(--Black, #1E2832);
+    color: white;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    margin-right: 50px;
+    border-radius: 3px;
+}
+
+.deleteItem {
+    display: inline-flex;
+    width: 12rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    background: var(--white, #1E2832);
+    color: black;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    border-radius: 3px;
+}

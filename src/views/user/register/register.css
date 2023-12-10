@@ -10,11 +10,21 @@ nav {
 nav .logo {
     cursor: pointer;
 }
+
+nav h1 {
+    font-weight: 400;
+}
+
 .container {
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-bottom: 4rem;
     height: fit-content;
     padding: 24px;
+}
+
+.container .modal h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
 }
 
 .pattern {
@@ -28,7 +38,7 @@ nav .logo {
 .modal .next {
     background: var(--black);
     cursor: pointer;
-    width: 25em;
+    width: 24em;
     height: 3.5em;
     margin: 33px auto 0 auto;
     color: var(--white);
@@ -36,6 +46,7 @@ nav .logo {
     font-weight: 600;
     letter-spacing: 0px;
     border: 0;
+    border-radius: 3px;
 }
 
 .footerP {
@@ -44,6 +55,7 @@ nav .logo {
     letter-spacing: 0px;
     text-align: center;
     margin-top: 23px;
+    font-family: "Open Sans", sans-serif;
 }
 
 .privacy {
@@ -51,6 +63,7 @@ nav .logo {
     font-weight: 300;
     letter-spacing: 0px;
     text-align: center;
+    font-family: "Open Sans", sans-serif;
 }
 
 .privacy a {
@@ -67,8 +80,10 @@ nav .logo {
     text-decoration: none;
     color: black;
     font-weight: bolder;
+    font-family: "Open Sans", sans-serif;
 }
 
 .footer p {
     color: rgba(0, 0, 0, 0.4);
+    font-family: "Open Sans", sans-serif;
 }
