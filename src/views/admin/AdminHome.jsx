@@ -89,9 +89,10 @@ const AdminHome = () => {
             <div className="admin-container">
                 <div className="profile-container">
                     <h1>Admin Profile</h1>
-                    <p>Username: {adminProfile.username}</p>
-                    <p>Email: {adminProfile.email}</p>
-                    <p>Income: ₱ {adminProfile.income}</p>
+                    <br />
+                    <p className=" pro Uname"><b>Username:</b> {adminProfile.username}</p>
+                    <p className=" pro Email"><b>Email:</b> {adminProfile.email}</p>
+                    <p className=" pro Income"><b>Income:</b> ₱ {adminProfile.income}</p>
                 </div>
                 <div className="category-contents-container">
                     <h1>Category Contents</h1>

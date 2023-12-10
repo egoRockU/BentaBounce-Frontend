@@ -107,9 +107,9 @@ const Seller = () => {
                 )}
             </div>
         </section>
-        <Stack justifyContent={"center"} spacing={2}>
+        <Stack className="pagination">
                 <Pagination 
-                count={Math.ceil(items.length / itemsPerPage)}
+                count={Math.ceil(userItems.length / itemsPerPage)}
                 page={currentPage}
                 onChange={handlePageChange} />
             </Stack>

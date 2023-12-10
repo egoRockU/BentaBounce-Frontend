@@ -39,16 +39,17 @@ const AdminLogIn = () => {
     return (
         <>
             <div className="log-in-nav">
-                <h1 className="titleLogIn">ADMIN LOGIN</h1>
+                <h1 className="titleLogIn"><b>ADMIN LOGIN</b></h1>
             </div>
+            
             <div className="surface">
                 <div className="log-in-box">
-                    <form onSubmit={login}>
+                    <form className="" onSubmit={login}>
                             Admin Name <br/>
-                            <input id="adminName" type="text" onChange={(e)=>{setAdminName(e.target.value)}}/><br/>
+                            <input className="AdminName" id="adminName" type="text" onChange={(e)=>{setAdminName(e.target.value)}}/><br/><br />
                             Password <br/>
-                            <input id="adminPassword" type="text" onChange={(e)=>{setAdminPass(e.target.value)}}/><br/>
-                        <input type="submit" value="Submit"/>
+                            <input className="AdminPass" id="adminPassword" type="text" onChange={(e)=>{setAdminPass(e.target.value)}}/><br/><br />
+                        <input className="submitbtn" type="submit" value="Submit"/>
                     </form>
                 </div>
             </div>

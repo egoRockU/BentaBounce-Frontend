@@ -40,7 +40,7 @@ const Shopping = () => {
 
 
     return ( 
-        <>
+        <section>
             <Navbar />
             <h1 className="shoppingTitle">My Shopping List</h1>
             <div className="itemDetails">
@@ -51,7 +51,9 @@ const Shopping = () => {
                 <p>Checkout</p>
                 <p>Remove</p>
             </div>
-            <div className="line"></div>
+            <div className="line">
+                
+            </div>
             {currentItems.map((item, key)=>
                 <Product 
                 key={key}
@@ -65,13 +67,13 @@ const Shopping = () => {
                 quantity={item.quantity}
             />
             )}
-            <Stack justifyContent={"center"} spacing={2}>
+            <Stack>
                 <Pagination 
                 count={Math.ceil(items.length / itemsPerPage)}
                 page={currentPage}
                 onChange={handlePageChange} />
             </Stack>
-        </>
+        </section>
     );
 }
 

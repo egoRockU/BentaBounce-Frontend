@@ -70,10 +70,10 @@ const SearchResult = () => {
 
             <div className="landing">
                 <div className="left-side">
-                    <h1>Lorem Ipsum</h1>
-                    <h3>you can explore ans shop many differnt collection
-                    from various barands here.</h3>
-                    <button><img src={Basket}  />Shop Now</button>
+                <h1>Look best items for you</h1>
+                    <h3>Explore and shop many different collection
+                    from various brands here</h3>
+                    <button class="searchBtn"><img src={Basket}  />Shop Now</button>
                 </div>
                 <div className="right-side">
                     <img src={girlBackground}/>

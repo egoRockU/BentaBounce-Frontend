@@ -17,7 +17,7 @@ const Home = () => {
     const [cheapToExp, setCheapToExp] = useState(true)
     
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 12;
+    const itemsPerPage = 10;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
 
@@ -94,9 +94,9 @@ const Home = () => {
 
             <div className="landing">
                 <div className="left-side">
-                    <h1>Lorem Ipsum</h1>
-                    <h3>you can explore ans shop many differnt collection
-                    from various barands here.</h3>
+                    <h1>Look best items for you</h1>
+                    <h3>Explore and shop many different collection
+                    from various brands here</h3>
                     <div className="shopnowbtn">
                         <a className="btn" href="#discover"> <FaBagShopping size={30} className="shopnowicon"/>Shop Now</a>
                     </div> 
