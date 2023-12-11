@@ -5,10 +5,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useNavigate } from "react-router-dom";
 
 const Shopping = () => {
 
     const [items, setItems] = useState([])
+    const [selectedItems, setSelectedItems] = useState([])
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -16,6 +18,7 @@ const Shopping = () => {
     const endIndex = startIndex + itemsPerPage;
 
     const currentItems = items.slice(startIndex, endIndex);
+    const navigate = useNavigate()
 
     useEffect(()=>{
         getItems()
@@ -38,6 +41,17 @@ const Shopping = () => {
         setCurrentPage(value);
       };
 
+    const handleSelectedItems = (items) => {
+        setSelectedItems(oldItems=>[...oldItems, items])
+    }
+
+    const handleUnselect = (cart_id) => {
+        setSelectedItems(selectedItems.filter(item=>item.cart_id !== cart_id))
+    }
+
+    const checkout = () => {
+        navigate('/shoppingsummary', {state: {items: selectedItems}})
+    }
 
     return ( 
         <section>
@@ -59,14 +73,18 @@ const Shopping = () => {
                 key={key}
                 cart_id={item.cart_id}
                 item_id={item.item_id}
+                seller_id={item.seller_id}
                 picture={item.image}
                 productName= {item.name}
                 Description= {item.details}
                 price={item.price}
                 stocks={item.stocks}
                 quantity={item.quantity}
+                onItemSelected={handleSelectedItems}
+                onItemUnselect={handleUnselect}
             />
             )}
+            <button onClick={checkout}>Checkout</button>
             <Stack>
                 <Pagination 
                 count={Math.ceil(items.length / itemsPerPage)}

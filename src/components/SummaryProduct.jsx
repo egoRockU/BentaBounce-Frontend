@@ -14,31 +14,12 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const Product = ({cart_id, item_id, seller_id, picture, productName, Description, price, stocks, quantity, onItemSelected, onItemUnselect}) => {
+const SummaryProduct = ({cart_id, item_id, seller_id, picture, productName, Description, price, stocks, quantity}) => {
 
-    const [count, setCount] = useState(Number(quantity))
-    const [totalPrice, setTotalPrice] = useState()
     const [userPay, setUserPay] = useState(0)
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
-    const [isChecked, setIsChecked] = useState(false)
 
-
-    useEffect(()=>{
-        setTotalPrice(count * Number(price))
-    },[count, price])
-
-    const decrease = () => {
-        if(count > 1) {
-            setCount(count - 1)
-        }
-    }
-
-    const increase = () => {
-        if (count < stocks){
-            setCount(count + 1)
-        }
-    }
 
     const openModal = () => {
         setShow(true)
@@ -48,32 +29,13 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
         setShow(false)
     }
 
-    const sendItemsToShopping = () => {
-        if (isChecked){
-            onItemUnselect(cart_id)
-            setIsChecked(false)
-        } else {
-            onItemSelected({
-                'cart_id': cart_id,
-                'item_id': item_id,
-                'productName': productName,
-                'seller_id': seller_id,
-                'picture': picture,
-                'description': Description,
-                'price': totalPrice,
-                'stocks': stocks,
-                'quantity': count
-            })
-            setIsChecked(true)
-        }
-    }
 
     const checkOut = () => {
         if (Number(userPay) === Number(totalPrice)){
             const input = {
                 'cart_id': cart_id,
                 'item_id': item_id,
-                'count': count,
+                'count': quantity,
                 'stocks': stocks
             }
             axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/cart/checkOut.php', input, {
@@ -90,11 +52,9 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
     
     const product = {
         description: productName,
-        price: totalPrice
+        price: price
     }
     
-
-
     const removeItem = () => {
         if (confirm(`Are you sure you want to remove ${productName}?`)){
             axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/cart/removeToCart.php', {'cart_id': cart_id}, {
@@ -119,15 +79,12 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
                     <p className="Description">{Description}</p>
                 </div>
                 <div className="productTotal">
-                    <button onClick={decrease}>-</button>
-                    <p>{count}</p>
-                    <button onClick={increase}>+</button>
+                    <p>{quantity}</p>
                 </div>
                 <div className="price">
-                    PHP {totalPrice}
+                    PHP {price}
                 </div>
                 <div>
-                    <input type="checkbox" onChange={sendItemsToShopping}></input>
                     <MdOutlineShoppingCartCheckout size="40" onClick={openModal}/>
                 </div>
                 <div>
@@ -145,7 +102,7 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
             <DialogTitle>Check out</DialogTitle>
             <DialogContent>
             <DialogContentText>
-                Enter the right amount to proceed. (PHP {totalPrice})
+                Enter the right amount to proceed. (PHP {price})
             </DialogContentText>
             <TextField
                 autoFocus
@@ -176,4 +133,4 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
     );
 }
 
-export default Product;
+export default SummaryProduct;

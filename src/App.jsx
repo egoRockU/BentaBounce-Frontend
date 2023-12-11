@@ -4,6 +4,7 @@ import Register from "./views/user/register/Register"
 import Home from "./views/user/home/Home"
 import Seller from "./views/user/seller/Seller"
 import Shopping from "./views/user/shopping/Shopping"
+import ShoppingSummary from "./views/user/shopping/ShoppingSummary"
 import ProductView from "./views/user/productView/Productview"
 import StoreView from "./components/StoreView"
 import EditProduct from "./components/EditProduct"
@@ -59,8 +60,8 @@ function App() {
             <Route path="/:sellerId/seller" element={<Seller />}/>
             <Route path="/:sellerId/:itemId/productView" element={<ProductView />} />
             <Route path="/storeview" element={<StoreView/>} />
-
             <Route path="/shopping" element={<Shopping />} />
+            <Route path="/shoppingsummary" element={<ShoppingSummary/>} />
             <Route path="/:itemId/editproduct" element={<EditProduct/>} />
             <Route path="/addproduct" element={<AddProduct />} />
             <Route path="/sellerprofile" element={<SellerProfile />} />
