@@ -18,6 +18,7 @@ import SearchResult from "./views/user/home/SearchResult"
 import AdminLogIn from "./views/admin/AdminLogIn"
 import AdminHome from "./views/admin/AdminHome"
 import { useEffect } from "react"
+import { PayPalScriptProvider } from "@paypal/react-paypal-js"
 
 function App() {
 
@@ -25,8 +26,13 @@ function App() {
     checkIsLoggedIn()
   })
 
+
   return (
     <BrowserRouter>
+      <PayPalScriptProvider options={{
+        clientId: `${import.meta.env.VITE_PAYPAL_CLIENT_ID}`,
+        currency: "PHP"
+        }}>
       <Routes>
         {
           !checkIsLoggedIn() && 
@@ -69,6 +75,7 @@ function App() {
 
 
         </Routes>
+        </PayPalScriptProvider>
     </BrowserRouter>
   )
 }

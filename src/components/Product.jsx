@@ -3,7 +3,8 @@ import { IoBagRemoveOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+//import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import PayPalCheckoutButton from "./PayPalCheckoutButton";
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -20,6 +21,7 @@ const Product = ({cart_id, item_id, picture, productName, Description, price, st
     const [userPay, setUserPay] = useState(0)
     const navigate = useNavigate()
     const [show, setShow] = useState(false)
+
 
     useEffect(()=>{
         setTotalPrice(count * Number(price))
@@ -63,6 +65,13 @@ const Product = ({cart_id, item_id, picture, productName, Description, price, st
             })
         }
     }
+
+    
+    const product = {
+        description: productName,
+        price: totalPrice
+    }
+    
 
 
     const removeItem = () => {
@@ -130,9 +139,11 @@ const Product = ({cart_id, item_id, picture, productName, Description, price, st
             <DialogContentText align="center">
                 OR
             </DialogContentText>
-            <PayPalScriptProvider options={{ clientId: "test" }}>
+            {/* <PayPalScriptProvider options={{ clientId: "test" }}>
                     <PayPalButtons style={{ layout: "horizontal" }} />
-                </PayPalScriptProvider>
+            </PayPalScriptProvider> */}
+            <PayPalCheckoutButton product={product} />
+
             </DialogContent>
             <DialogActions>
             <Button onClick={closeModal}>Cancel</Button>
