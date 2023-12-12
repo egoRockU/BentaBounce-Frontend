@@ -1,6 +1,6 @@
 import { MdOutlineShoppingCartCheckout } from "react-icons/md"
 import { IoBagRemoveOutline } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 //import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
@@ -14,7 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const SummaryProduct = ({cart_id, item_id, seller_id, picture, productName, Description, price, stocks, quantity}) => {
+const SummaryProduct = ({cart_id, item_id, seller_id, seller_name, picture, productName, Description, price, stocks, quantity}) => {
 
     const [userPay, setUserPay] = useState(0)
     const navigate = useNavigate()
@@ -31,7 +31,7 @@ const SummaryProduct = ({cart_id, item_id, seller_id, picture, productName, Desc
 
 
     const checkOut = () => {
-        if (Number(userPay) === Number(totalPrice)){
+        if (Number(userPay) === Number(price)){
             const input = {
                 'cart_id': cart_id,
                 'item_id': item_id,

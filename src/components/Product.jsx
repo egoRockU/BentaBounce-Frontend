@@ -14,7 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const Product = ({cart_id, item_id, seller_id, picture, productName, Description, price, stocks, quantity, onItemSelected, onItemUnselect}) => {
+const Product = ({cart_id, item_id, seller_id, seller_name, picture, productName, Description, price, stocks, quantity, onItemSelected, onItemUnselect}) => {
 
     const [count, setCount] = useState(Number(quantity))
     const [totalPrice, setTotalPrice] = useState()
@@ -28,15 +28,46 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
         setTotalPrice(count * Number(price))
     },[count, price])
 
-    const decrease = () => {
+    const decrease = async () => {
         if(count > 1) {
-            setCount(count - 1)
+            await setCount(count - 1)
+        }
+        if (isChecked){
+            onItemUnselect(cart_id)
+            onItemSelected({
+                'cart_id': cart_id,
+                'item_id': item_id,
+                'productName': productName,
+                'seller_id': seller_id,
+                'seller_name': seller_name,
+                'picture': picture,
+                'description': Description,
+                'price': totalPrice,
+                'stocks': stocks,
+                'quantity': count
+            })
         }
     }
 
-    const increase = () => {
+    const increase = async () => {
         if (count < stocks){
-            setCount(count + 1)
+            await setCount(count + 1)
+        }
+
+        if (isChecked){
+            onItemUnselect(cart_id)
+            onItemSelected({
+                'cart_id': cart_id,
+                'item_id': item_id,
+                'productName': productName,
+                'seller_id': seller_id,
+                'seller_name': seller_name,
+                'picture': picture,
+                'description': Description,
+                'price': totalPrice,
+                'stocks': stocks,
+                'quantity': count
+            })
         }
     }
 
@@ -58,6 +89,7 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
                 'item_id': item_id,
                 'productName': productName,
                 'seller_id': seller_id,
+                'seller_name': seller_name,
                 'picture': picture,
                 'description': Description,
                 'price': totalPrice,
@@ -113,7 +145,9 @@ const Product = ({cart_id, item_id, seller_id, picture, productName, Description
     return ( 
         <>
             <div className="products">
+                <a href={`/${seller_id}/${item_id}/productView`}>
                 <img src={`data:image/jpeg;base64, ${picture}`} className="picture"/>
+                </a>
                 <div className="productDesc">
                     <h3 className="productName">{productName}</h3>
                     <p className="Description">{Description}</p>

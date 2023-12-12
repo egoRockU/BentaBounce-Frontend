@@ -11,6 +11,8 @@ const Shopping = () => {
 
     const [items, setItems] = useState([])
     const [selectedItems, setSelectedItems] = useState([])
+    const [itemCount, setItemCount] = useState()
+    const [subtotal, setSubtotal] = useState()
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -22,7 +24,9 @@ const Shopping = () => {
 
     useEffect(()=>{
         getItems()
-    }, [])
+        setItemCount(selectedItems.length)
+        getSubtotal()
+    }, [selectedItems])
 
     const getItems = () => {
         const input = {
@@ -39,7 +43,7 @@ const Shopping = () => {
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
-      };
+    }
 
     const handleSelectedItems = (items) => {
         setSelectedItems(oldItems=>[...oldItems, items])
@@ -51,6 +55,12 @@ const Shopping = () => {
 
     const checkout = () => {
         navigate('/shoppingsummary', {state: {items: selectedItems}})
+    }
+
+    const getSubtotal = () => {
+        const itemPrices = selectedItems.map((item)=>item.price)
+        const sum = itemPrices.reduce((a, b)=> a+b, 0)
+        setSubtotal(sum)
     }
 
     return ( 
@@ -74,6 +84,7 @@ const Shopping = () => {
                 cart_id={item.cart_id}
                 item_id={item.item_id}
                 seller_id={item.seller_id}
+                seller_name={item.seller_name}
                 picture={item.image}
                 productName= {item.name}
                 Description= {item.details}
@@ -84,7 +95,12 @@ const Shopping = () => {
                 onItemUnselect={handleUnselect}
             />
             )}
-            <button onClick={checkout}>Checkout</button>
+            <div>
+                <p>Subtotal</p>
+                <p>{itemCount} items</p>
+                <h4>PHP {subtotal}</h4>
+                <button onClick={checkout}>Checkout</button>
+            </div>
             <Stack>
                 <Pagination 
                 count={Math.ceil(items.length / itemsPerPage)}
