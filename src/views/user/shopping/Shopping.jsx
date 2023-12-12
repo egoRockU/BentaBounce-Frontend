@@ -22,10 +22,12 @@ const Shopping = () => {
     const currentItems = items.slice(startIndex, endIndex);
     const navigate = useNavigate()
 
+
     useEffect(()=>{
         getItems()
         setItemCount(selectedItems.length)
         getSubtotal()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedItems])
 
     const getItems = () => {
@@ -62,6 +64,7 @@ const Shopping = () => {
         const sum = itemPrices.reduce((a, b)=> a+b, 0)
         setSubtotal(sum)
     }
+
 
     return ( 
         <section>
