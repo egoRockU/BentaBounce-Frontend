@@ -40,6 +40,7 @@ const ShoppingSummary = () => {
         setShowModalKey(null)
     }
 
+    
     const countTotal = (prices) => {
         const priceArr = prices.map((item)=>item.price)
         const sum = priceArr.reduce((a, b)=> a+b, 0)
@@ -105,6 +106,11 @@ const ShoppingSummary = () => {
         navigate('/shopping')
     }
 
+    const formatPrice = (price) => {
+        const formattedPrice = Number(price).toFixed(2);
+        return formattedPrice === Math.floor(formattedPrice) ? `${formattedPrice}.00` : formattedPrice;
+      };
+
     return ( 
         <section>
             <Navbar />
@@ -114,16 +120,12 @@ const ShoppingSummary = () => {
                 <p>Description</p>
                 <p>Quantity</p>
                 <p>Price</p>
-                <p>Checkout</p>
-                <p>Remove</p>
-            </div>
-            <div className="line">
-                
-            </div>
+            </div>  
             {!items && <p>No items</p>}
             {items && Object.keys(groupedItems).map((seller)=>
                 <>
-                    <p>Seller: {seller}</p>
+                   
+                    
                     {groupedItems[seller].map((item, key)=>
                         <>
                             <SummaryProduct 
@@ -141,14 +143,29 @@ const ShoppingSummary = () => {
                             />
                         </>
                     )}
-                    <div>
-                        <p>Subtotal</p>
-                        <p>{groupedItems[seller].length} items</p>
-                        <p>Shipping: PHP {countShipping(countQuantity(groupedItems[seller]))}</p>
-                        <h4>PHP {countTotal(groupedItems[seller])}</h4>
-                        <button onClick={()=>openModal(seller)}>Checkout</button>
+                    
+                    <div className="sellercontainer">
+                        <p className="sellerLabel">Seller: </p>
+                        <p className="sellerName">{seller}</p>
                     </div>
 
+                    <div className="subtotalsummary">
+                        <div className="summaryleft">
+                            <p className="subtotallabel">Subtotal</p>
+                            <p>{groupedItems[seller].length} items</p>
+                        </div>
+                        <div className="summarycenter">
+                            <p className="totalsflabel">Shipping Fee:</p>
+                            <p>PHP {countShipping(countQuantity(groupedItems[seller]))}</p>
+                        </div>
+                        <div className="summaryright">
+                            <p className="totalpricelabel">PHP</p>
+                            <p className="pricetotal">{formatPrice(countTotal(groupedItems[seller]))}</p>
+                        </div>
+                    </div>
+                    <div className="checkoutsummarycontainer">
+                        <button className="checkoutsummarybtn" onClick={()=>openModal(seller)}><p className="checkoutsummarylabel">Checkout</p></button>
+                    </div>
                     <Dialog open={showModalKey === seller} onClose={closeModal}>
                         <DialogTitle>Check out</DialogTitle>
                         <DialogContent>

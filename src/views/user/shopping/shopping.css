@@ -11,13 +11,21 @@
     text-align: center;
 }
 
-.productDesc h3{
+.productDesc .productName{
     text-align: left;
+    padding-left: 10rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5625rem;
+    font-weight: 600;
 }
 
-.productDesc p {
+.productDesc .Description {
     margin: 1rem 0 0 0;
     text-align: left;
+    padding-left: 10rem;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 .productTotal {
@@ -59,9 +67,19 @@
     margin: 1rem auto;
 }
 
-.picture {
-    width: 100%;
+.products .productpicture {
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: #f0f0f0;
+    width: 8rem;
+    height: 8rem;
+    margin-left: 5rem;
+}
 
+.products .productpicture .pictureimg {
+    max-width: 90%;
+    max-height: 90%;
 }
 
 .products .price {
@@ -72,3 +90,172 @@
     width: 100%;
 }
 
+/*Subtotal*/
+
+.subtotalContainer {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: right;
+}
+
+.subtotalContainer .subleft {
+    display: flex;
+    flex-direction: column;
+    margin-right: 6.69rem;
+}
+
+.subtotalContainer .subright {
+    display: flex;
+    flex-direction: row;
+}
+
+.subtotalContainer .subtotallabel {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5625rem;
+    font-weight: 500;
+    margin-top: 22px;
+}
+
+.subtotalContainer .totalitems {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.subtotalContainer .totalpricelabel {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.875rem;
+    font-weight: 600;
+    padding-right: 10px;
+    padding-top: 30px;
+}
+
+.subtotalContainer .pricetotal {
+    font-family: "Open Sans", sans-serif;
+    font-size: 3.125rem;
+    font-weight: 600;
+    padding-top: 3px;
+}
+
+.checkoutcontainer {
+    padding-top: 1.69rem;
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: right;
+}
+
+.checkoutbtn {
+    width: 25rem;
+    height: 3.5rem;
+    background: var(--Black, #1E2832);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.checkoutbtn .checkoutlabel {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.20006rem;
+    font-weight: 400;
+}
+
+
+/*Shopping Summary*/
+
+.sellercontainer {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.sellercontainer .sellerLabel {
+    font-family: "Roboto", sans-serif;
+    font-size: larger;
+    padding-right: 10px;
+}
+
+.sellercontainer .sellerName {
+    font-family: "Roboto", sans-serif;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.subtotalsummary {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: right;
+}
+
+.summaryleft {
+    padding-left: 10.12rem;
+}
+
+.summaryleft .subtotallabel {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5625rem;
+    font-weight: 500;
+    margin-top: 22px;
+}
+
+.summarycenter {
+    padding-left: 10.12rem;
+}
+
+.summarycenter .totalsflabel {
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.5625rem;
+    font-weight: 500;
+    margin-top: 22px;
+}
+
+.summaryright {
+    display: flex;
+    padding-left: 5rem;
+    flex-direction: row;
+}
+
+.summaryright .totalpricelabel {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.875rem;
+    font-weight: 600;
+    padding-right: 10px;
+    padding-top: 30px;
+}
+
+.summaryright .pricetotal {
+    font-family: "Open Sans", sans-serif;
+    font-size: 3.125rem;
+    font-weight: 600;
+    padding-top: 3px;
+}
+
+.checkoutsummarycontainer {
+    padding-top: 1.69rem;
+    display: flex;
+    width: 70%;
+    margin: 0 0 3rem 17.9rem;
+    justify-content: right;
+}
+
+.checkoutsummarybtn {
+    width: 25rem;
+    height: 3.5rem;
+    background: var(--Black, #1E2832);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.checkoutsummarybtn .checkoutsummarylabel {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.20006rem;
+    font-weight: 400;
+}

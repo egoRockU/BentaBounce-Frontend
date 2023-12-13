@@ -47,7 +47,9 @@ const ProductView = ({item}) => {
                 </div>
                 <div className="description">
                     <h1 className="name">{item.name}</h1>
-                    <p className="price">PHP {item.price}</p>
+                    <div className="pricecontainer">
+                        <p className="pricelabel">₱ {item.price}</p>
+                    </div>
                     <div className="desc">
                         <p className="descTitle">Description</p>
                         <p className="descText">{item.details}</p>
@@ -59,21 +61,20 @@ const ProductView = ({item}) => {
                     <div className="quantity">
                         <div className="quantityItem">
                             <p className="descTitle">Quantity</p>
-                        <div className="totalItem">
-                            <button onClick={decrease}>-</button>
-                            <p>{count}</p>
-                            <button onClick={increase}>+</button>
-                        </div>
+                            <div className="totalItem">
+                                <button onClick={decrease}>-</button>
+                                <p>{count}</p>
+                                <button onClick={increase}>+</button>
+                            </div>
                         </div>
                         <div className="stocks">
                             <p className="stocksdesc">Stocks Available</p>
-                            {item.stocks == 0 && <p>Out of stock</p>}
-                            {item.stocks > 0 && <p>{item.stocks}</p>}
-
+                            {item.stocks == 0 && <p className="outofstock">Out of stock</p>}
+                            {item.stocks > 0 && <p className="stocknumber">{item.stocks}</p>}
                         </div>
                     </div>
-                    {item.stocks == 0 && <button className="addToCart" onClick={addToCart} disabled><IoBagAdd />Out of stock</button>}
-                    {item.stocks > 0 && <button className="addToCart" onClick={addToCart}><IoBagAdd />Add To Shopping List</button>}
+                    {item.stocks == 0 && <button className="addToCart" onClick={addToCart} disabled><IoBagAdd className="addtocartIcon"/><p>Out of stock</p></button>}
+                    {item.stocks > 0 && <button className="addToCart" onClick={addToCart}><IoBagAdd size={20} className="addtocartIcon"/><p>Add To Shopping List</p></button>}
                     
                 </div>
             </div>

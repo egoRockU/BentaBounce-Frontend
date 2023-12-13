@@ -305,6 +305,10 @@ menu a {
     
 }
 
+.section3 .grid-items .catalog {
+    margin-bottom: 12px;
+}
+
 .grid-items {
     font-family: Open Sans;
 }

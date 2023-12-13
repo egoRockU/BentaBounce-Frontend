@@ -70,6 +70,7 @@
     background: white;
     border: 1px rgb(136, 135, 135) solid;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .sellerContainer .sellerProfile .profiless .sellerediticon:hover {
@@ -176,7 +177,7 @@
     display: flex;
     align-items: center;
     background-color: #F4F4F5;
-    width: 47.3125rem;
+    width: 27.5rem;
     height: 5.25rem;
     padding: 20px;
     margin-top: 20px;
@@ -222,12 +223,36 @@
     font-size: medium;
 }
 
+.description .category .descText {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400; 
+    width: 20rem;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    font-size: medium;
+}
+
 .description .category {
     margin-top: 28px;
     align-items: center;
 }
 
 .description .category .descTitle{
+    color: rgba(0, 0, 0, 0.40);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+    margin-right: 20px;
+}
+
+.description .quantity .quantityItem .descTitle{
+    color: rgba(0, 0, 0, 0.40);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+    margin-right: 20px;
+}
+
+.description .quantity .stocks .stocksdesc{
     color: rgba(0, 0, 0, 0.40);
     font-family: "Open Sans", sans-serif;
     font-weight: 600; 
@@ -310,7 +335,7 @@
     display: flex;
     justify-content: center ;
     align-items: center;
-    background-color: pink;
+    background-color: #f0f0f0;
     width: 27.625rem;
     height: 35.125rem;
 }
@@ -319,3 +344,19 @@
     max-width: 100%;
     max-height: 100%;
 }
+
+/*Footer*/
+
+.containerr .description .quantity {
+    display: flex;
+    place-content: start;
+}
+
+.containerr .description .quantity .quantityItem {
+    margin-right: 100px;
+}
+
+.containerr .description .quantity .stocks {
+    align-items: center;
+}
+
