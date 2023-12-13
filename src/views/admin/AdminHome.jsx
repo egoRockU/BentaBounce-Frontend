@@ -9,11 +9,17 @@ const AdminHome = () => {
     const [categoryList, setCategoryList] = useState([])
     const [catNames, setCatNames] = useState([])
     const [products, setProducts] = useState([])
+    const [orders, setOrders] = useState([])
+    const [orderHistory, setOrderHistory] = useState([])
+    const [users, setUsers] = useState([])
 
     useEffect(()=>{
         getAdminProfile()
         getCategoriesList()
         getProducts()
+        getOrders()
+        getOrderHistory()
+        getUsers()
     }, [])
 
 
@@ -81,6 +87,55 @@ const AdminHome = () => {
         console.log(productId)
     }
 
+    const getOrders = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/orders/getOrders.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setOrders(res.data)
+        })
+    }
+
+    const getOrderHistory = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/orders/orderHistory.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setOrderHistory(res.data)
+        })
+    }
+
+    const getUsers = () => {
+        axios.get('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/profile/adminGetProfiles.php', {
+            headers: {
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then((res) => {
+            setUsers(res.data)
+        })
+    }
+
+    const confirmOrder = (id, sellerId, amount, shipping) => {
+        const input = {
+            'id': id,
+            'sellerId': sellerId,
+            'amount': Number(amount) - Number(shipping),
+            'shipping': shipping
+        }
+        if (confirm("Are you sure the items have been delivered?")){
+            axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/orders/updateOrder.php', input, {
+                headers: {
+                    "ngrok-skip-browser-warning": "8888"
+                }
+            }).then(()=>{
+                alert(`Deliver Success`)
+                navigate(0)
+            })
+        }
+    }
+
     return (
         <>
             <div className="log-in-nav">
@@ -105,28 +160,105 @@ const AdminHome = () => {
                 </div>
             </div>
             <div className="admin-container">
-                <div className="user-profiles-container">
+                <div className="product-contents-container">
                     <h1>User Profiles</h1>
+                    <ul className="product-list">
+                        {users.map((user, key)=>
+                            <li className="product-list-item" key={key}>                 
+                                <div className="prod-li-key">
+                                    <p>{key+1}</p>
+                                </div>
+                                <div className="prod-li-name">
+                                    <p>{user.username}</p>
+                                </div>
+                                <div className="prod-li-price">
+                                    <p>PHP {user.wallet}</p>
+                                </div>
+                                <div className="prod-li-username">
+                                    <p>{user.email}</p>
+                                </div>
+                            </li>
+                        )}
+                    </ul>
                 </div>
                 <div className="product-contents-container">
                     <h1>Product Contents</h1>
                     <ul className="product-list">
-                    {products.map((product, key)=>
-                        <li className="product-list-item" onClick={()=>{editProduct(product.id)}} key={key}>                 
+                        {products.map((product, key)=>
+                            <li className="product-list-item" onClick={()=>{editProduct(product.id)}} key={key}>                 
+                                <div className="prod-li-key">
+                                    <p>{key+1}</p>
+                                </div>
+                                <div className="prod-li-name">
+                                    <p>{product.name}</p>
+                                </div>
+                                <div className="prod-li-price">
+                                    <p>₱ {product.price}</p>
+                                </div>
+                                <div className="prod-li-username">
+                                    <p>{product.username}</p>
+                                </div>
+                            </li>
+                        )}
+                    </ul>
+                </div>
+            </div>
+            <div className="admin-container">
+                <div className="product-contents-container">
+                    <h1>Pending Orders</h1>
+                    <ul className="product-list">
+                        {orders.map((order, key)=>
+                            <li className="product-list-item" key={key}>                 
                             <div className="prod-li-key">
                                 <p>{key+1}</p>
                             </div>
                             <div className="prod-li-name">
-                                <p>{product.name}</p>
+                                <p>{order.username}</p>
                             </div>
                             <div className="prod-li-price">
-                                <p>₱ {product.price}</p>
+                                <p>₱ {order.amount}</p>
                             </div>
                             <div className="prod-li-username">
-                                <p>{product.username}</p>
+                                <p>{order.address}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{order.recipient}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{order.shipping}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <button onClick={()=>confirmOrder(order.id, order.user_id, order.amount, order.shipping)}>Confirm Order</button>
                             </div>
                         </li>
-                    )}
+                        )}
+                    </ul>
+                </div>
+                <div className="product-contents-container">
+                    <h1>Order History</h1>
+                    <ul className="product-list">
+                        {orderHistory.map((orderHis, key)=>
+                            <li className="product-list-item" key={key}>                 
+                            <div className="prod-li-key">
+                                <p>{key+1}</p>
+                            </div>
+                            <div className="prod-li-name">
+                                <p>{orderHis.username}</p>
+                            </div>
+                            <div className="prod-li-price">
+                                <p>₱ {orderHis.amount}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{orderHis.address}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{orderHis.recipient}</p>
+                            </div>
+                            <div className="prod-li-username">
+                                <p>{orderHis.shipping}</p>
+                            </div>
+                        </li>
+                        )}
                     </ul>
                 </div>
             </div>
