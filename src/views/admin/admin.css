@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.titleLogin{
+    font-size: 20px;
+
+}
+
+.submitbtn{
+    background: rgba(30, 40, 50, 1);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-weight: bolder;
+    gap: 8px;
+    font-size: 17px;
+}
+
+.AdminName{
+    margin-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 20rem;
+    border-radius: 5px;
+    border-style: hidden;
+}
+
+.AdminPass{
+    margin-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 20rem;
+    border-radius: 5px;
+    border-style: hidden;
+}
+.log-in-nav {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+
+}
+
+.log-in-box{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    padding: 120px 40px 120px 40px; 
+    background-color: rgb(228, 228, 228);
+}
+
+.surface {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-container {
+    border: 1px solid;
+    height: 500px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-container {
+    border: 1px solid;
+    width: 20%;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(237, 237, 237);
+}
+
+.pro{
+    padding-bottom: 10px;
+}
+
+.category-contents-container {
+    margin: 30px;
+    width: 80%;
+    border: 1px solid;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(237, 237, 237);
+}
+
+.cat-form{
+    padding: 10px;
+}
+
+.user-profiles-container {
+    border: 1px solid;
+    width: 50%;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(237, 237, 237);
+}
+
+.product-contents-container {
+    border: 1px solid;
+    margin: 30px;
+    width: 50%;
+    list-style-type: none;
+    padding: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(237, 237, 237);
+}
+
+.product-contents-container li{
+    list-style-type: none;
+}
+
+.product-contents-container ul{
+    height:300px; 
+    overflow:hidden; 
+    overflow-y:scroll;
+}
+
+.product-list-item {
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 10px;
+    
+}
+
+.product-list-item:hover .prod-li-key,
+.product-list-item:hover .prod-li-name,
+.product-list-item:hover .prod-li-price,
+.product-list-item:hover .prod-li-username{
+    cursor: pointer;
+    background-color: gray;
+}
+
+.prod-li-key{
+    width: 10%;
+}
+
+.prod-li-name{
+    width: 40%;
+}
+
+.prod-li-price{
+    width: 20%;
+}
+
+.prod-li-username{
+    width: 30%;
+}

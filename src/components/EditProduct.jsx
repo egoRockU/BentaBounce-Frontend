@@ -93,9 +93,33 @@ const EditProduct = () => {
         formData.append("stocks", stocks)
         formData.append("itemId", itemId)
 
-        if (stocks == 0){
-            if (confirm("Stocks Empty, are you sure you want to delete this item gone?")==true){
-                axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/deleteItem.php', {'itemId': itemId}, {
+        // if (stocks == 0){
+        //     if (confirm("Stocks Empty, are you sure you want to delete this item gone?")==true){
+        //         axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/deleteItem.php', {'itemId': itemId}, {
+        //         headers: {
+        //             "ngrok-skip-browser-warning": "8888"
+        //         }
+        //     }).then(()=>{
+        //         alert('Item deleted successfully')
+        //         navigate('/editsellerprofile')
+        //     })
+        //     }
+
+        
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/updateItems.php', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "ngrok-skip-browser-warning": "8888"
+            }
+        }).then(()=>{
+            alert('Item updated successfully')
+            navigate('/editsellerprofile')
+        })
+        
+    }
+
+    const handleDelete = () => {
+        axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/deleteItem.php', {'itemId': itemId}, {
                 headers: {
                     "ngrok-skip-browser-warning": "8888"
                 }
@@ -103,19 +127,6 @@ const EditProduct = () => {
                 alert('Item deleted successfully')
                 navigate('/editsellerprofile')
             })
-            }
-
-        } else {
-            axios.post('https://absolute-leech-premium.ngrok-free.app/BentaBounce/backend/items/updateItems.php', formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                    "ngrok-skip-browser-warning": "8888"
-                }
-            }).then(()=>{
-                alert('Item updated successfully')
-                navigate('/editsellerprofile')
-            })
-        }
     }
 
     return ( 
@@ -162,7 +173,7 @@ const EditProduct = () => {
                         
                         <div className="savedeleteButton">
                             <button className="saveChanges" type="submit">Save The Changes</button>
-                            <button className="deleteItem" type="submit">Delete Item</button>
+                            <button className="deleteItem" onClick={handleDelete}>Delete Item</button>
                         </div>
 
                     </form>

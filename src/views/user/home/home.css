@@ -23,6 +23,20 @@
     cursor: pointer;
 }
 
+.searchBtn{
+    display: flex;
+    background: rgba(30, 40, 50, 1);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    gap: 8px;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 #searchBar {
     position: absolute;
     left: 320px;
@@ -120,6 +134,8 @@ menu a {
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
     text-transform: initial;
+    /*gawa ni Jhude*/
+    margin-right: 200px;
 }
 
 .landing .left-side {
@@ -133,17 +149,22 @@ menu a {
 .shopnowbtn .btn{
     display: flex;
     background: rgba(30, 40, 50, 1);
-    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     color: white;
     gap: 8px;
     font-size: 25px;
     text-decoration: none;
     border-radius: 5px;
+
 }
 
 .shopnowbtn .shopnowicon{
     display: flex;
-    align-self: center;
+    text-align: center;
+
 }
 
 .section2{
@@ -288,20 +309,16 @@ menu a {
     font-family: Open Sans;
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-
-}
+ 
 
 footer {
     background: rgba(30, 40, 50, 1);
     color: white;
     display: flex;
     justify-content: space-between;
-    height: 5vh;
+    height: 2vh;
     align-items: center;
-    padding: 0 100px;
+    padding: 0 50px;
 }
 
 footer a {
