@@ -35,6 +35,9 @@
 .shoppingTitle {
     text-align: center;
     margin: 2rem 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 3.125rem;
+    font-weight: 500;
 }
 
 .itemDetails {

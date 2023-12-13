@@ -1,5 +1,6 @@
 import "./home.css"
 import girlBackground from "../../../img/19.png"
+import nico from "../../../img/pf.png"
 import { FaBagShopping } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 import GridItem from "../../../components/GridItem"
@@ -102,7 +103,7 @@ const Home = () => {
                     </div> 
                 </div>
                 <div className="right-side">
-                    <img src={girlBackground}/>
+                    <img src={nico}/>
                 </div>
             </div>
         </section>
@@ -111,9 +112,8 @@ const Home = () => {
                 Discover More
             </h1>
             <div className="category">
-                <div className="products">
-                    
-                </div>
+                <div className="products"> 
+            </div>
                 <div className="filter">
                     <button className="filterbtn" onClick={changePriceSort}><FaFilter size={20} className="filtericon"/>Price</button>
                 </div>

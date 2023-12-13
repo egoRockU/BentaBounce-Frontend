@@ -303,3 +303,19 @@
     font-size: 1rem;
     border-radius: 3px;
 }
+
+/*Landing*/
+
+.landing .right-side{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    background-color: pink;
+    width: 27.625rem;
+    height: 35.125rem;
+}
+
+.landing .right-side img {
+    max-width: 100%;
+    max-height: 100%;
+}
