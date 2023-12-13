@@ -279,12 +279,12 @@ menu a {
 
 .section3 {
     width: 70%;
-    margin: 220px auto;
+    margin: 100px auto;
 }
 
 .section3 .grid-containers {
     display: grid;
-    grid-template-columns: 400px 200px 200px 250px;
+    grid-template-columns: 457px 260px 260px 250px;
     grid-template-rows: 220px;
     grid-gap: 35px;
 }
@@ -320,7 +320,7 @@ footer {
     color: white;
     display: flex;
     justify-content: space-between;
-    height: 2vh;
+    height: 3rem;
     align-items: center;
     padding: 0 50px;
 }
