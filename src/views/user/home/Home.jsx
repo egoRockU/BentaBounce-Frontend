@@ -1,6 +1,5 @@
 import "./home.css"
 import girlBackground from "../../../img/19.png"
-import nico from "../../../img/pf.png"
 import { FaBagShopping } from "react-icons/fa6";
 import { FaFilter } from "react-icons/fa";
 import GridItem from "../../../components/GridItem"
@@ -103,7 +102,7 @@ const Home = () => {
                     </div> 
                 </div>
                 <div className="right-side">
-                    <img src={nico}/>
+                    <img src={girlBackground}/>
                 </div>
             </div>
         </section>
