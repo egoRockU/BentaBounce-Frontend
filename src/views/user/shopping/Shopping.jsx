@@ -60,10 +60,18 @@ const Shopping = () => {
     }
 
     const getSubtotal = () => {
-        const itemPrices = selectedItems.map((item)=>item.price)
-        const sum = itemPrices.reduce((a, b)=> a+b, 0)
-        setSubtotal(sum)
-    }
+        if (selectedItems.length === 0) {
+          setSubtotal('0.00'); // Set default value if no items selected
+        } else {
+          const itemPrices = selectedItems.map((item)=>item.price);
+          const sum = itemPrices.reduce((a, b)=> a+b, 0);
+          setSubtotal(sum);
+        }
+      };
+      
+    const formatSubtotal = (subtotal) => {
+      return parseFloat(subtotal).toFixed(2);
+    };
 
 
     return ( 
@@ -98,12 +106,21 @@ const Shopping = () => {
                 onItemUnselect={handleUnselect}
             />
             )}
-            <div>
-                <p>Subtotal</p>
-                <p>{itemCount} items</p>
-                <h4>PHP {subtotal}</h4>
-                <button onClick={checkout}>Checkout</button>
+
+            <div className="subtotalContainer">
+                <div className="subleft">
+                     <p className="subtotallabel">Subtotal</p>
+                    <p className="totalitems">{itemCount} items</p>
+                </div>
+                <div className="subright">
+                    <p className="totalpricelabel">PHP</p>
+                    <p className="pricetotal">{formatSubtotal(subtotal) || '0.00'}</p>
+                </div>
             </div>
+            <div className="checkoutcontainer">
+                <button className="checkoutbtn" onClick={checkout}><p className="checkoutlabel">Place Order</p></button>
+            </div>
+            
             <Stack>
                 <Pagination 
                 count={Math.ceil(items.length / itemsPerPage)}

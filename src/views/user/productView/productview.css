@@ -103,8 +103,26 @@
     width: 40%;
     background: #1E2832;
     color: white;
-    padding: .6rem 1.5rem;
     border: none;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 20rem;
+    height: 3rem;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.addToCart .addtocartIcon {
+    margin-right: 10px;
+    align-self: center;
+}
+
+.addToCart p {
+    font-family: "Roboto", sans-serif;
+    font-size: larger;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .profile {

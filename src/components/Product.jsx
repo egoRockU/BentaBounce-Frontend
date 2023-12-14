@@ -128,7 +128,9 @@ const Product = ({cart_id, item_id, seller_id, seller_name, picture, productName
         <>
             <div className="products">
                 <a href={`/${seller_id}/${item_id}/productView`}>
-                <img src={`data:image/jpeg;base64, ${picture}`} className="picture"/>
+                <div className="productpicture">
+                    <img src={`data:image/jpeg;base64, ${picture}`} className="pictureimg"/>
+                </div>
                 </a>
                 <div className="productDesc">
                     <h3 className="productName">{productName}</h3>

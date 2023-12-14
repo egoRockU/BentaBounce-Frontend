@@ -3,7 +3,9 @@ const SummaryProduct = ({picture, productName, Description, price, quantity}) =>
     return ( 
         <>
             <div className="products">
-                <img src={`data:image/jpeg;base64, ${picture}`} className="picture"/>
+                <div className="productpicture">
+                    <img src={`data:image/jpeg;base64, ${picture}`} className="pictureimg"/>
+                </div>
                 <div className="productDesc">
                     <h3 className="productName">{productName}</h3>
                     <p className="Description">{Description}</p>
