@@ -22,6 +22,7 @@ const PayPalCheckoutButton = (props) => {
 
         const input = {
             'user_id': sellerId,
+            'order_name': orderName.slice(0,-3),
             'amount': amount,
             'address': deliveryAddress,
             'recipient': deliveryRecipient,
@@ -58,7 +59,7 @@ const PayPalCheckoutButton = (props) => {
 
 
     products.map((product)=>{
-        orderName = orderName + product.productName + " + "
+        orderName = orderName + `${product.productName}(${product.quantity}) + `
     })
 
     return (

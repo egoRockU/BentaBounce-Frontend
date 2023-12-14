@@ -79,10 +79,16 @@ const ShoppingSummary = () => {
         return itemsArr
     }
 
-    const checkOut = (totalAmount, sellerId, shipping, itemsToUpdate) => {
+    const checkOut = (totalAmount, sellerId, shipping, itemsToUpdate, products) => {
+        let orderName = ''
+        products.map((product)=>{
+            orderName = orderName + `${product.productName}(${product.quantity}) + `
+        })
+
         if (Number(userPay) === Number(totalAmount)){
             const input = {
                 'user_id': sellerId,
+                'order_name': orderName.slice(0,-3),
                 'amount': totalAmount,
                 'address': address,
                 'recipient': recipient,
@@ -229,7 +235,8 @@ const ShoppingSummary = () => {
                             Number(countTotal(groupedItems[seller])) + Number(countShipping(countQuantity(groupedItems[seller]))),
                             groupedItems[seller][0].seller_id,
                             countShipping(countQuantity(groupedItems[seller])),
-                            itemsToUpdate(groupedItems[seller])
+                            itemsToUpdate(groupedItems[seller]),
+                            groupedItems[seller]
                             )}>CheckOut</Button>
                         </DialogActions>
                     </Dialog>

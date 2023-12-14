@@ -224,8 +224,11 @@ const AdminHome = () => {
                             <div className="prod-li-username">
                                 <p>{order.recipient}</p>
                             </div>
-                            <div className="prod-li-username">
+                            {/* <div className="prod-li-username">
                                 <p>{order.shipping}</p>
+                            </div> */}
+                            <div className="prod-li-username">
+                                <p>{order.items}</p>
                             </div>
                             <div className="prod-li-username">
                                 <button onClick={()=>confirmOrder(order.id, order.user_id, order.amount, order.shipping)}>Confirm Order</button>
@@ -254,8 +257,11 @@ const AdminHome = () => {
                             <div className="prod-li-username">
                                 <p>{orderHis.recipient}</p>
                             </div>
-                            <div className="prod-li-username">
+                            {/* <div className="prod-li-username">
                                 <p>{orderHis.shipping}</p>
+                            </div> */}
+                            <div className="prod-li-username">
+                                <p>{orderHis.items}</p>
                             </div>
                         </li>
                         )}
