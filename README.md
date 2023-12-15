@@ -12,6 +12,7 @@ Instruction: For easy and faster way, contact the developers so they could start
 For much complicated way, you can download the back-end source code at https://github.com/egoRockU/BentaBounce-Backend.git, download and run xampp, put the project folder to htdocs folder in xampp. Go through front-end source code and replace the axios links according xampp server links.
 
 Admin Access Username: admin
+
 Admin Access Password: admin12345
 
 Free User Account: test@gmail.com
