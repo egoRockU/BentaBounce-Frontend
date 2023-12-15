@@ -9,7 +9,7 @@ Pages: Landing Page, Sign Up/Log In, Profile Page, Add/Edit Product Page, See Al
 Features: E-commerce CRUD, Search Items, Category & Price Filters, PayPal Payment, and Google Log In
 
 Instruction: For easy and faster way, contact the developers so they could start the backend server. Then you can download the front-end source code. Make sure you have node installed in your machine. Open the project folder in your terminal and run "npm i -D vite" and "npm run dev". You can now open the application on the localhost port displayed on the vite server terminal.
-For much complicated way, you can download the back-end source code at https://github.com/egoRockU/BentaBounce-Backend.git, download and run xampp, put the project folder to htdocs folder in xampp. Go through front-end source code and replace the axios link according xampp server links.
+For much complicated way, you can download the back-end source code at https://github.com/egoRockU/BentaBounce-Backend.git, download and run xampp, put the project folder to htdocs folder in xampp. Go through front-end source code and replace the axios links according xampp server links.
 
 Admin Access Username: admin
 Admin Access Password: admin12345
