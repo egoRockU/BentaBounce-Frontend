@@ -14,7 +14,7 @@ In BentaBounce, everyone has the right to sell items of their choice and buy the
 > The backend of this project is hosted on the developers' own server. In order to utilize the whole site, contact the developers so that they could start the server. You can send email to lagutan.gerwin.bscs2021@gmail.com.
 
 > [!WARNING]
-> The project only simulates the E-commerce website workflow. There is no real transactions involve when using the site. You can still use the paypal method of checking out items by using this sandbox account `[email: sb-cga4r28691936@personal.example.com, password: AS4mA}^N]`
+> The project only simulates the E-commerce website workflow. There is no real transactions involve when using the site. You can still use the paypal method of checking out items by using this sandbox account `[ email: sb-cga4r28691936@personal.example.com, password: AS4mA}^N ]`
 
 ![BentaBounce Preview GIF](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/Preview.gif?raw=true) 
 
