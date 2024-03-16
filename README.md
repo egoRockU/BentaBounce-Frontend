@@ -1,24 +1,26 @@
-Project: BentaBounce
+[![BentaBounce Banner](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/banner.png?raw=true)](https://bentabounce.vercel.app "BentaBounce")
 
-About the project: BentaBounce is an online store where users can sell their own items and buy items. BentaBounce, a playful combination of "Benta"(sale) and "Bounce"(leave), embodies its core values of promoting a bustiling and dynamic online marketplace. Administrators have full access to the system and database, as well as the ability to confirm orders and distribute income. On the other hand, users can be buyers and sellers at the same time.
+# BentaBounce
 
-How  the system works? BentaBounce can function like a normal e-commerce system, where users can create profiles and start their transactions. They can also add products and edit the item's content. The admin will then confirm the orders, deliver the items, and distribute the payment to the respective sellers.
+ A playful combination of "Benta" (sale) and "Bounce" (leave), embodies its core values of promoting a bustling and dynamic online marketplace.
+In BentaBounce, everyone has the right to sell items of their choice and buy the items that pique their curiosity.
 
-Pages: Landing Page, Sign Up/Log In, Profile Page, Add/Edit Product Page, See All Items Page, Category Items, Search Results Page, Item Details, Shopping Cart, Summary of Orders, Checkout Modal, and Admin Login and Dashboard
+#### This project is created with ![Static Badge](https://img.shields.io/badge/ReactJS-black?logo=react) ![Static Badge](https://img.shields.io/badge/Figma-black?logo=figma) ![Static Badge](https://img.shields.io/badge/PHP-indigo?logo=php) ![Static Badge](https://img.shields.io/badge/MySQL-white?logo=mysql) ![Static Badge](https://img.shields.io/badge/ngrok-darkblue?logo=ngrok)
 
-Features: E-commerce CRUD, Search Items, Category & Price Filters, PayPal Payment, and Google Log In
+**Backend Repo**: https://github.com/egoRockU/BentaBounce-Backend.git
 
-Instruction: For easy and faster way, contact the developers so they could start the backend server. Then you can download the front-end source code. Make sure you have node installed in your machine. Open the project folder in your terminal and run "npm i -D vite" and "npm run dev". You can now open the application on the localhost port displayed on the vite server terminal.
-For much complicated way, you can download the back-end source code at https://github.com/egoRockU/BentaBounce-Backend.git, download and run xampp, put the project folder to htdocs folder in xampp. Go through front-end source code and replace the axios links according xampp server links.
 
-Admin Access Username: admin
+> [!IMPORTANT]
+> The backend of this project is hosted on the developers' own server. In order to utilize the whole site, contact the developers so that they could start the server. You can send email to lagutan.gerwin.bscs2021@gmail.com.
 
-Admin Access Password: admin12345
+> [!WARNING]
+> The project only simulates the E-commerce website workflow. There is no real transactions involve when using the site. You can still use the paypal method of checking out items by using this sandbox account [email: sb-cga4r28691936@personal.example.com, password: AS4mA}^N]
 
-Free User Account: test@gmail.com
-Free User Password: qwerty
+![BentaBounce Preview GIF](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/Preview.gif?raw=true) 
 
-Paypal Sandbox Account: sb-cga4r28691936@personal.example.com
-Paypal Sandbox Password: AS4mA}^N
-
-Thank You.
+## Screenshots
+![BentaBounce Screenshot1](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/01.PNG?raw=true)
+![BentaBounce Screenshot2](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/02.PNG?raw=true)
+![BentaBounce Screenshot3](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/03.PNG?raw=true)
+![BentaBounce Screenshot4](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/04.PNG?raw=true)
+![BentaBounce Screenshot5](https://github.com/egoRockU/BentaBounce-Frontend/blob/master/screenshots/05.PNG?raw=true)
