@@ -5,7 +5,7 @@
  A playful combination of "Benta" (sale) and "Bounce" (leave), embodies its core values of promoting a bustling and dynamic online marketplace.
 In BentaBounce, everyone has the right to sell items of their choice and buy the items that pique their curiosity.
 
-#### This project is created using ![Static Badge](https://img.shields.io/badge/ReactJS-black?style=for-the-badge&logo=react) ![Static Badge](https://img.shields.io/badge/Figma-black?style=for-the-badge&logo=figma) ![Static Badge](https://img.shields.io/badge/PHP-indigo?style=for-the-badge&logo=php) ![Static Badge](https://img.shields.io/badge/MySQL-white?style=for-the-badge&logo=mysql) ![Static Badge](https://img.shields.io/badge/ngrok-darkblue?style=for-the-badge&logo=ngrok)
+#### This project is created using [![Static Badge](https://img.shields.io/badge/ReactJS-black?style=for-the-badge&logo=react)](https://react.dev/) [![Static Badge](https://img.shields.io/badge/Figma-black?style=for-the-badge&logo=figma)](https://www.figma.com/) [![Static Badge](https://img.shields.io/badge/PHP-indigo?style=for-the-badge&logo=php)](https://www.php.net/) [![Static Badge](https://img.shields.io/badge/MySQL-white?style=for-the-badge&logo=mysql)](https://www.mysql.com/) [![Static Badge](https://img.shields.io/badge/ngrok-darkblue?style=for-the-badge&logo=ngrok)](https://ngrok.com/)
 
 **Backend Repo**: https://github.com/egoRockU/BentaBounce-Backend.git
 
