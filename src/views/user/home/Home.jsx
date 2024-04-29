@@ -15,6 +15,7 @@ const Home = () => {
     const [items, setItems] = useState([])
     const [categoryList, setCategoryList] = useState([])
     const [cheapToExp, setCheapToExp] = useState(true)
+    const [failedToFetch, setFailedToFetch] = useState(false)
     
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -46,6 +47,10 @@ const Home = () => {
             }
         }).then((res)=>{
             setItems(res.data)
+        }).catch((err)=>{
+            alert("The backend server might be down for now.");
+            setFailedToFetch(true);
+            console.log("error: " + err)
         })
     }
 
@@ -56,6 +61,9 @@ const Home = () => {
             }
         }).then((res) => {
             setCategoryList(res.data)
+        }).catch((err)=>{
+            setFailedToFetch(true);
+            console.log("error: " + err)
         })
     }
 
@@ -117,9 +125,17 @@ const Home = () => {
                     <button className="filterbtn" onClick={changePriceSort}><FaFilter size={20} className="filtericon"/>Price</button>
                 </div>
             </div>
+            <div>
+            {failedToFetch && (<>
+                    <h1>The backend server might be down for now.</h1><br/>
+                    <h2>Please contact the developers so that they could start the backend server(hosted locally).</h2><br/>
+                    <h2>Send an email to <u>lagutan.gerwin.bscs2021@gmail.com</u></h2><br/>
+                    <h2>We appreciate your interest to this project.</h2>
+                </>)}
+            </div>
             
             <div className="grid-container">
-                {items.length === 0 && <p>Loading...</p>}
+                {(items.length === 0) && (failedToFetch===false) && <p>Loading...</p>}
                 {items.length > 0 && currentItems.map((item, key)=>
                     <GridItem
                     key = {key}

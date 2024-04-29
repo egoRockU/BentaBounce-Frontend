@@ -48,6 +48,7 @@ const Register = () => {
             alert ('Make sure the password matches')
         }
     }
+    
 
     const clickLogin = (e) => {
         e.preventDefault()
